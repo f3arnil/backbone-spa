@@ -7,8 +7,10 @@ var app = express();
 
 var uiRootDir = path.join(__dirname + '/' + config.backbone.rootDirectory);
 var staticPath = __dirname + '/' + config.backbone.staticPath;
+var bundlePath = __dirname + '/' + config.backbone.bundlePath;
 
 app.use('/static', express.static(staticPath));
+app.use('/bundles', express.static(bundlePath));
 
 app.listen(config.application.port, function () {
     console.log('Example app listening on port ' + config.application.port + '!');
