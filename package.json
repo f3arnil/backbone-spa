@@ -1,23 +1,24 @@
 {
-  "name": "backbone-spa",
-  "version": "0.0.1",
-  "description": "Sample Backbone application with Karma tests",
-  "main": "index.js",
-  "scripts": {
-    "test": "node app"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/f3arnil/backbone-spa.git"
-  },
-  "author": "Alex Vasilyeu",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/f3arnil/backbone-spa/issues"
-  },
-  "homepage": "https://github.com/f3arnil/backbone-spa#readme",
-  "dependencies": {
-    "express": "^4.13.4",
-    "path": "^0.12.7"
-  }
+    "name": "backbone-spa",
+    "version": "0.0.1",
+    "description": "Sample Backbone application with Karma tests",
+    "main": "app.js",
+    "private": true,
+    "scripts": {
+        "npm start": "node app"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/f3arnil/backbone-spa.git"
+    },
+    "author": "Alex Vasilyeu",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/f3arnil/backbone-spa/issues"
+    },
+    "homepage": "https://github.com/f3arnil/backbone-spa#readme",
+    "dependencies": {
+        "express": "^4.13.4",
+        "path": "^0.12.7"
+    }
 }

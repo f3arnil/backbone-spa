@@ -1,2 +1,6 @@
 node_modules
 npm-debug.log
+*.map
+*hot-update*
+.idea
+backbone-spa-ui/build/
