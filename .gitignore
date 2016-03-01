@@ -3,4 +3,4 @@ npm-debug.log
 *.map
 *hot-update*
 .idea
-backbone-spa-ui/build/
+backbone-spa-ui/static/bundles
