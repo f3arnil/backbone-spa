@@ -19,7 +19,7 @@ module.exports = {
         ]
     },
     output: {
-        path: path.resolve(__dirname, './build/scripts'),
+        path: path.resolve(__dirname, './static/bundles'),
         filename: '[name].bundle.js'
     },
     module: {
