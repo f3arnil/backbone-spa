@@ -2,6 +2,8 @@ module.exports = (function () {
     'use strict';
 
     var HeaderView = require('./header-view');
+    var SidebarModule = require('../modules/sidebar/index');
+    
 
     var TubeAppMainTpl = _.template((require('tpl!../templates/tube-app-main'))());
 
@@ -16,9 +18,14 @@ module.exports = (function () {
             var headerView = new HeaderView();
             headerView.render();
         },
+        initSidebar: function () {
+            var sidebarModule = new SidebarModule();
+            //sidebarView.render();
+        },
         render: function () {
             this.$el.html(this.template);
             this.initHeader();
+            this.initSidebar();
             return this;
         }
     });

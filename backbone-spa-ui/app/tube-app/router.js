@@ -15,7 +15,7 @@ module.exports = (function () {
             console.log(id)
         },
         defaultAction: function(actions) {
-            console.log(action)
+            console.log(actions)
             console.log('defaultAction');
         }
     });
