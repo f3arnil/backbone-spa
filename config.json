@@ -4,7 +4,7 @@
     },
     "backbone": {
         "rootDirectory": "backbone-spa-ui",
-        "staticPath": "backbone-spa-ui/static",
+        "staticPath": "backbone-spa-ui/build",
         "bundlePath": "backbone-spa-ui/build/scripts"
     }
 }

@@ -17,6 +17,11 @@
     "style-loader": "^0.13.0",
     "underscore": "^1.8.3",
     "url-loader": "^0.5.7",
+    "webpack": "^1.12.14",
+    "tpl": "^0.3.0",
+    "tpl-loader": "^0.2.1"
+  },
+  "devDependencies": {
     "webpack": "^1.12.14"
   }
 }
