@@ -12,10 +12,8 @@ module.exports = (function () {
         },
         showSearchParam: function(id) {
             console.log('showSearchParam');
-            console.log(id)
         },
         defaultAction: function(actions) {
-            console.log(action)
             console.log('defaultAction');
         }
     });
