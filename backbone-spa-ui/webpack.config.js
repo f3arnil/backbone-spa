@@ -9,8 +9,8 @@ var ENV_DEV = process.env.NODE_ENV === 'Development';
 module.exports = {
     context: __dirname,
     entry: {
-        tube: path.resolve(__dirname, './js/tube-app/tube-app.js'),
-        admin: path.resolve(__dirname, './js/admin-app/admin-app.js'),
+        tube: path.resolve(__dirname, './app/tube-app/tube-app'),
+        admin: path.resolve(__dirname, './app/admin-app/admin-app'),
         vendor: [
             'underscore',
             'backbone',
@@ -19,7 +19,7 @@ module.exports = {
         ]
     },
     output: {
-        path: path.resolve(__dirname, './static/bundles'),
+        path: path.resolve(__dirname, './build/scripts'),
         filename: '[name].bundle.js'
     },
     module: {
@@ -32,7 +32,6 @@ module.exports = {
         ]
     },
     plugins: [
-
         new webpack.ProvidePlugin({
             _: 'underscore',
             Backbone: 'backbone',
@@ -42,8 +41,8 @@ module.exports = {
         })
     ],
     resolve: {
-        root: path.resolve(__dirname, './js'),
-        extensions: ['', '.js']
+        root: path.resolve(__dirname, './build'),
+        extensions: ['', '.js', '.tpl', '.less']
     },
     watch: ENV_DEV,
     watchOptions: {
