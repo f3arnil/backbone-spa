@@ -7,8 +7,8 @@ module.exports = (function () {
         el: '#left-panel',
         template: sidebarTpl,
         initialize: function () {
-            console.log('hi');
-            //this.render();
+            //console.log('hi');
+            this.render();
         },
         render: function () {
             this.$el.html(this.template);

@@ -3,11 +3,11 @@ module.exports = (function () {
     
     var SidebarView = require('./views/sidebar-view');
 
-    function SidebarModule () {
+    function SidebarView () {
         var sidebarView = new SidebarView();
         sidebarView.render();
     };
     
-    return SidebarModule();
+    return SidebarView;
     
 })();
