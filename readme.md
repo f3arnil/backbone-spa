@@ -1,16 +1,21 @@
 ###Installation in "./":
-*1. npm install
-*2. npm i -g webpack
+<ol>
+    <li>npm install</li>
+    <li>npm i -g webpack</li>
+</ol>
 
 <br />
 
 ####Start:
-*1. node app
+<ul>
+    <li>node app</li>
+</ul>
 
 <hr/>
 
 ###Installation in "./backbone-spa-ui":
-
-*1. npm install
-*2. npm i -g webpack
-*3. npm install extract-text-webpack-plugin --save
+<ol>
+    <li>npm install</li>
+    <li>npm i -g webpack</li>
+    <li>npm install extract-text-webpack-plugin --save</li>
+</ol>

@@ -10,20 +10,15 @@ module.exports = (function () {
     var TubeAppView = Backbone.View.extend({
         el: '#app-view',
         template: TubeAppTpl,
-        modules: {
-            sidebarModule: new SideBarModule(),
-            headerModule: new HeaderModule(),
-            contentModule: new ContentModule()
-        },
+        modules: {},
         initialize: function (options) {
             this.router = options.router;
             this.render();
         },
         initModule: function () {
-            this.modules.sidebarModule;
-            this.modules.headerModule;
-            this.modules.contentModule;
-            //get('')
+            this.modules.headerModule = new HeaderModule();
+            this.modules.sidebarModule = new SideBarModule();
+            this.modules.contentModule = new ContentModule();
         },
         render: function () {
             this.$el.html(this.template);
