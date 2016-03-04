@@ -3,21 +3,10 @@ module.exports = (function() {
 
     var SearchView = require('./views/searchView');
 
-    var ApplicationView = Backbone.View.extend({
+    var SearchModule = function () {
+        var searchView = new SearchView();
+    };
 
-        initialize: function(opts){
-            this.router = opts.router;
-            this.initDom();
-        },
-        initDom: function () {
-            console.log(1)
-            //var includeHeader = new IncludeHeader();
-        },
-        render: function () {
-            return this;
-        }
-    });
-
-    return ApplicationView;
+    return SearchModule;
 
 })();

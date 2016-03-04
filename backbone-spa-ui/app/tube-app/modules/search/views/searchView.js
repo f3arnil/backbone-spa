@@ -1,14 +1,20 @@
-"use strict";
+module.exports = (function () {
+    'use strict';
 
-var SearchView = Backbone.View.extend({
-    
-    template: _.template( $('#search-id').html() ),
-    
-    initialize: function () {
-        this.render();
-    },
-    
-    render: function () {
-        this.$el.html( this.template() )
-    }
-})
+    var SearchViewTpl = _.template((require('tpl!../templates/search'))());
+
+    var SearchView = Backbone.View.extend({
+        el: '#search-holder',
+        template: SearchViewTpl,
+        initialize: function () {
+            this.render();
+        },
+        render: function () {
+            this.$el.html(this.template);
+            return this;
+        }
+    });
+
+    return SearchView;
+
+})();

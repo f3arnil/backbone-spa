@@ -3,15 +3,15 @@ module.exports = (function () {
 
     var AppRouter = Backbone.Router.extend({
         routes: {
-            'search': 'showSearch',
-            'search/:id': 'showSearchParam',
+            'channel': 'showChannel',
+            'channel/:id': 'showChannelParam',
             '*actions': 'defaultAction'
         },
-        showSearch: function() {
-            console.log('showSearch');
+        showChannel: function() {
+            console.log('showChannel');
         },
-        showSearchParam: function(id) {
-            console.log('showSearchParam');
+        showChannelParam: function(id) {
+            console.log('showChannelParam');
         },
         defaultAction: function(actions) {
             console.log('defaultAction');
