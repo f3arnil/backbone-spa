@@ -1,8 +1,9 @@
 module.exports = (function () {
     'use strict';
 
-    var HeaderModule = require('../modules/header/index');
-
+    var HeaderModule = require('../modules/header');
+    var SideBarModule = require('../modules/sidebar');
+    
     var TubeAppTpl = _.template((require('tpl!../templates/tube-app-view'))());
 
     var TubeAppView = Backbone.View.extend({
@@ -14,6 +15,7 @@ module.exports = (function () {
         },
         initModules: function () {
             var headerModule = new HeaderModule();
+            var sidebar = new SideBarModule();
         },
         render: function () {
             this.$el.html(this.template);
