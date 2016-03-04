@@ -1,7 +1,7 @@
 module.exports = (function() {
     'use strict';
 
-   var HeaderView = require('./views/header-view');
+   var HeaderView = require('./views/headerView');
 
     var HeaderModule = function () {
         var headerView = new HeaderView();

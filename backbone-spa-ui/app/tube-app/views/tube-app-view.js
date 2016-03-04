@@ -2,6 +2,7 @@ module.exports = (function () {
     'use strict';
 
     var HeaderModule = require('../modules/header/');
+    var SearchModule = require('../modules/search/');
     var SideBarModule = require('../modules/sidebar/');
     var ContentModule = require('../modules/content/');
 
@@ -17,6 +18,7 @@ module.exports = (function () {
         },
         initModule: function () {
             this.modules.headerModule = new HeaderModule();
+            this.modules.searchModule = new SearchModule();
             this.modules.sidebarModule = new SideBarModule();
             this.modules.contentModule = new ContentModule();
         },
