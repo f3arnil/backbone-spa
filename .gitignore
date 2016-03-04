@@ -3,8 +3,3 @@ npm-debug.log
 *.map
 *hot-update*
 .idea
-backbone-spa-ui/static/bundles
-backbone-spa-ui/build
-backbone-spa-ui/build/scripts
-backbone-spa-ui/build/scripts/tube.bundle.js
-backbone-spa-ui/build/scripts/vendor.bundle.js
