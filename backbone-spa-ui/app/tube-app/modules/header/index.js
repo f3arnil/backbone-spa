@@ -1,5 +1,5 @@
 module.exports = (function() {
-    "use strict";
+    'use strict';
 
    var HeaderView = require('./views/header-view');
 
