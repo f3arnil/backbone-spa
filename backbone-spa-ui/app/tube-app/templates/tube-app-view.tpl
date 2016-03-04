@@ -1,7 +1,9 @@
 <header id="header">(header)</header>
 <section id="search"></section>
-<section id="main-wrap">
-    <aside id="left-panel">(left panel)</aside>
-    <article id="main-article">(Article)</article>
+<section class="content" id="main-wrap">
+    <aside id="left-panel" class="sidebar">(left panel)</aside>
+    <article id="main-article" class="wrapper list-video">
+        (Article)
+    </article>
 </section>
 <footer></footer>

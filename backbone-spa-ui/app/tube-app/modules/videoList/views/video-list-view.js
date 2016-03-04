@@ -4,11 +4,11 @@ module.exports = (function () {
     var listViewTpl = _.template((require('tpl!../templates/video-list'))());
     
     var VideoListView = Backbone.View.extend({
-        el: '#main-article',
-        tempalte: listViewTpl,
-        initialize: function (options) {
-            this.router = options.router;
+        el: '#article',
+        template: listViewTpl,
+        initialize: function () {
             this.render();
+            console.log(this.$el);
         },
         render: function () {
             this.$el.html(this.template);
