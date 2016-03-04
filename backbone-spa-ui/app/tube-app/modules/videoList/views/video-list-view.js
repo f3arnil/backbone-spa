@@ -1,21 +1,34 @@
 module.exports = (function () {
     'use strict';
-    
-    var listViewTpl = _.template((require('tpl!../templates/video-list'))());
-    
+
+    //var listViewTpl = _.template((require('tpl!../templates/video-list'))());
+    var VideoListCollection = require('../collection/video-list-collection');
+
     var VideoListView = Backbone.View.extend({
         el: '#article',
-        template: listViewTpl,
+        //template: listViewTpl,
+        template: '<li><%= name %></li>',
         initialize: function () {
-            this.render();
-            console.log(this.$el);
+            //_.bindAll(this, 'render');
+            var that = this;
+            this.collection = new VideoListCollection;
+            this.collection.fetch({
+                    success: function (item) {
+                        //that.render();
+                        console.log('item > ', item);
+                    }
+                });
+            console.log(this.collection);
         },
         render: function () {
-            this.$el.html(this.template);
+            this.$el.append(this.template({
+                name: 'hello'
+                VideoListCollection: this.collection.models.toJSON()
+            }));
             return this;
         }
     });
-    
+
     return VideoListView;
-    
+
 })();

@@ -1,3 +1,7 @@
+<% _.each(videoListCollection, function (videoListModel) { %>
+    <p><%= videoListModel.name %></p>
+<% }); %>
+
 <ul class="list-group">
     <li class="list-group-item">
         <div class="preview">
