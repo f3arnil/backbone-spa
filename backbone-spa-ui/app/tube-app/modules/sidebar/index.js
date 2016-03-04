@@ -1,13 +1,14 @@
-module.exports = (function () {
-    'use strict';
-    
-    var SidebarView = require('./views/sidebar-view');
+'use strict'
 
-    function SidebarView () {
-        var sidebarView = new SidebarView();
-        sidebarView.render();
+module.exports = (function() {
+
+   var SideBarView = require('./view/sidebar-view');
+
+    var SideBarModule = function () {
+        var sideBarView = new SideBarView();
+        sideBarView.render();
     };
-    
-    return SidebarView;
-    
+
+    return SideBarModule;
+
 })();
