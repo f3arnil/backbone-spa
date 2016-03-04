@@ -1,31 +1,25 @@
 module.exports = (function () {
     'use strict';
 
-    var HeaderView = require('./header-view');
-    var SidebarView = require('../modules/sidebar/index');
-    
+    var HeaderModule = require('../modules/header/index');
+    var ContentModule = require('../modules/content/index');
 
-    var TubeAppMainTpl = _.template((require('tpl!../templates/tube-app-main'))());
+    var TubeAppTpl = _.template((require('tpl!../templates/tube-app-view'))());
 
     var TubeAppView = Backbone.View.extend({
         el: '#app-view',
-        template: TubeAppMainTpl,
-        initialize: function (opts) {
-            this.router = opts.router;
+        template: TubeAppTpl,
+        initialize: function (options) {
+            this.router = options.router;
             this.render();
         },
-        initHeader: function () {
-            var headerView = new HeaderView();
-            headerView.render();
-        },
-        initSidebar: function () {
-            var sidebarModule = new SidebarView();
-            sidebarView.render();
+        initModules: function () {
+            var headerModule = new HeaderModule();
+            var contentModule = new ContentModule();
         },
         render: function () {
             this.$el.html(this.template);
-            this.initHeader();
-            this.initSidebar();
+            this.initModules();
             return this;
         }
     });
