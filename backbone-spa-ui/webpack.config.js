@@ -1,10 +1,10 @@
 var webpack = require('webpack');
-//var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 //var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
 var path = require('path');
-//var AngularPlugin = require('angular-webpack-plugin');
 
-var ENV_DEV = process.env.NODE_ENV === 'Development';
+// var ENV_DEV = process.env.NODE_ENV === 'Development';
+var ENV_DEV = true;
 
 module.exports = {
     context: __dirname,
@@ -15,7 +15,7 @@ module.exports = {
             'underscore',
             'backbone',
             'jquery',
-            'bootstrap'
+            'bootstrap-sass!./bootstrap-sass.config.js'
         ]
     },
     output: {
@@ -24,11 +24,26 @@ module.exports = {
     },
     module: {
         loaders: [
-            { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,   loader: "url?limit=10000&mimetype=application/font-woff" },
-            { test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,  loader: "url?limit=10000&mimetype=application/font-woff" },
-            { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,    loader: "url?limit=10000&mimetype=application/octet-stream" },
-            { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,    loader: "file" },
-            { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,    loader: "url?limit=10000&mimetype=image/svg+xml" }
+            { 
+                test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
+                loader: "url?limit=10000&mimetype=application/font-woff"
+            },
+            { 
+                test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,
+                loader: "url?limit=10000&mimetype=application/font-woff"
+            },
+            { 
+                test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+                loader: "url?limit=10000&mimetype=application/octet-stream"
+            },
+            { 
+                test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+                loader: "file"
+            },
+            { 
+                test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+                loader: "url?limit=10000&mimetype=image/svg+xml"
+            }
         ]
     },
     plugins: [
@@ -38,11 +53,14 @@ module.exports = {
             bootstrap: 'bootstrap',
             $:'jquery',
             jQuery:'jquery'
+        }),
+        new ExtractTextPlugin('../styles/styles.css', {
+            allChunks: true
         })
     ],
     resolve: {
         root: path.resolve(__dirname, './build'),
-        extensions: ['', '.js', '.tpl', '.less']
+        extensions: ['', '.js', '.tpl', '.less', '.sass']
     },
     watch: ENV_DEV,
     watchOptions: {
