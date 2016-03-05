@@ -32,8 +32,8 @@ module.exports = (function () {
                 var view = new ChannelView({
                     model: item
                 });
-                colView.$el.append(view.render().el);
-            });
+                this.$el.append(view.render().el);
+            }, this);
             return this;
         }
     });
