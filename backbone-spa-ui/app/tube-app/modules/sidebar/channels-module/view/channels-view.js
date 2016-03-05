@@ -6,7 +6,6 @@ module.exports = (function () {
 
     var ChannelTemplate = require('tpl!../template/channel-item');
     var ChannelsTemplate = require('tpl!../template/channels-template');
-    var ChannelView = require('./channel-view.js');
 
     var channelsView = Backbone.View.extend({
         el: '#channels-view',
@@ -20,6 +19,8 @@ module.exports = (function () {
             this.collection.fetch();
         },
         onCollectionSync: function () {
+            this.stopListening(this.collection);
+            this.collection.fetch();
             this.render();
         },
         onCollectionError: function (model, xhr) {
