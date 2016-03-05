@@ -19,6 +19,8 @@ module.exports = (function () {
         render: function () {
             this.$el.html(this.template);
             this.initModules();
+            console.log(this.modules.channels.channelsView);
+            
             return this;
         }
     });

@@ -6,8 +6,10 @@ module.exports = (function () {
     var ChannelsRouter = require('./router/channels-router');
 
     var ChannelsModule = function () {
-        var router = new ChannelsRouter();
-        var channelsView = new ChannelsView()
+        return {
+            router: new ChannelsRouter(),
+            channelsView: new ChannelsView()
+        }
     };
 
     return ChannelsModule;

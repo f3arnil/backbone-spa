@@ -28,7 +28,7 @@ module.exports = (function () {
         },
         onRenderComplite: function () {
             this.collection.each(function (item) {
-                this.$el.append(this.itemTemplate(item.toJSON()));
+                this.$el.find('ul').append(this.itemTemplate(item.toJSON()));
             }, this);
         },
         render: function () {
