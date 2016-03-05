@@ -5,12 +5,13 @@ module.exports = (function () {
         routes: {
             'channel/:id': 'showChannel',
             'channel/:id/videos': 'showChannelsVideos',
+            'videos/:id': 'show'
         },
         showChannel: function (id) {
-            console.log('showChannel');
+            console.log('showChannel', id);
         },
         showChannelsVideos: function (id) {
-            console.log('showChannelsVideos');
+            console.log('showChannelsVideos', id);
         },
     });
 
