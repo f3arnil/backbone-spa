@@ -1,33 +1,36 @@
 module.exports = (function () {
     'use strict';
 
-    var listViewTpl = require('tpl!../templates/videos-list');
+    var VideosListTemplate = require('tpl!../templates/videos-list');
+    var VideoListTemplate = require('tpl!../templates/video-list');
     var VideoListView = require('./video-list-view.js');
     var VideoListCollection = require('../collection/video-list-collection');
 
     var VideosListView = Backbone.View.extend({
         el: '#article',
-        template: listViewTpl,
+        template: VideosListTemplate,
+        itemTemplate: VideoListTemplate,
         initialize: function () {
-            var that = this;
             this.collection = new VideoListCollection();
-            this.collection.fetch({
-                success: function (item) {
-                    that.render();
-                    //console.log('item > ', item);
-                }
-            });
-            //console.log(this.collection);
+            this.listenTo(this.collection, 'sync', this.onCollectionSync);
+            this.listenTo(this.collection, 'error', this.onCollectionError);
+            this.on('render:complite', this.onRenderComplite, this);
+            this.collection.fetch();
+        },
+        onCollectionSync: function () {
+            this.render();
+        },
+        onCollectionError: function (model, xhr) {
+            console.error(xhr.statusText + '! ' + xhr.responseText);
+        },
+        onRenderComplite: function () {
+            this.collection.each(function (item) {
+                this.$el.find('#item-article').append(this.itemTemplate(item.toJSON()));
+            }, this);
         },
         render: function () {
-            this.$el.append(this.template());
-            this.collection.each(function (item) {
-                var view = new VideoListView({
-                    model: item
-                });
-                this.$el.append(view.render().el);
-            }, this);
-            return this;
+            this.$el.html(this.template());
+            this.trigger('render:complite');
         }
     });
 
