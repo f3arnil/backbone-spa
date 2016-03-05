@@ -5,7 +5,7 @@ module.exports = (function () {
         routes: {
             'channel/:id': 'showChannel',
             'channel/:id/videos': 'showChannelsVideos',
-            'videos/:id': 'show'
+            'videosByChannel/:id': 'showVideoByChannel',
         },
         showChannel: function (id) {
             console.log('showChannel', id);
@@ -13,6 +13,10 @@ module.exports = (function () {
         showChannelsVideos: function (id) {
             console.log('showChannelsVideos', id);
         },
+        showVideoByChannel: function(id) {
+            Backbone.Events.trigger('route:showVideoByChannel');
+            console.log('showVideoByChannel', id);
+        }
     });
 
     return ChannelsRouter;

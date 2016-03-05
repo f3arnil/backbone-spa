@@ -9,6 +9,7 @@ module.exports = (function () {
         },
         defaultAction: function (actions) {
             console.log('defaultAction');
+            this.navigate('#');
         }
     });
 

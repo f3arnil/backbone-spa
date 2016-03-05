@@ -2,7 +2,7 @@
 
 module.exports = (function () {
 
-    var SideBarTpl = _.template((require('tpl!../template/sidebar-template'))());
+    var SideBarTpl = require('tpl!../template/sidebar-template');
     var ChannelsModule = require('../channels-module');
 
     var SideBarView = Backbone.View.extend({
@@ -17,7 +17,7 @@ module.exports = (function () {
             }
         },
         render: function () {
-            this.$el.html(this.template);
+            this.$el.html(this.template());
             this.initModules();
             return this;
         }
