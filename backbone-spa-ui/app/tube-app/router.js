@@ -1,19 +1,13 @@
+'use strict';
+
 module.exports = (function () {
-    'use strict';
 
     var AppRouter = Backbone.Router.extend({
         routes: {
-            'channel': 'showChannel',
-            'channel/:id': 'showChannelParam',
+            '': 'defaultAction',
             '*actions': 'defaultAction'
         },
-        showChannel: function() {
-            console.log('showChannel');
-        },
-        showChannelParam: function(id) {
-            console.log('showChannelParam');
-        },
-        defaultAction: function(actions) {
+        defaultAction: function (actions) {
             console.log('defaultAction');
         }
     });
