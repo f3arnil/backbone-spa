@@ -1,13 +1,18 @@
-##Installation in "./":
-###1. npm install
-###2. npm i -g webpack
+###Installation in "./":
+<ol>
+    <li>npm install</li>
+</ol>
 
-##Start:
-###1. node app
+<br />
+
+####Start:
+<ul>
+    <li>node app</li>
+</ul>
 
 <hr/>
 
-##Installation in "./backbone-spa-ui":
-
-####1. npm install
-####2. npm i -g webpack
+###Installation in "./backbone-spa-ui":
+<ol>
+    <li>npm install</li>
+</ol>

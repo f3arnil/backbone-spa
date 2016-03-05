@@ -53,13 +53,18 @@ button, input, textarea {
 .sidebar-menu li.active a, 
 .sidebar-menu li a:hover, 
 .sidebar-menu li.active a:hover, 
-.sidebar-menu li a {
+.sidebar-menu li a,
+.channel-menu li.active a, 
+.channel-menu li a:hover, 
+.channel-menu li.active a:hover, 
+.channel-menu li a {
     color: #222;
     font-family: Roboto,arial,sans-serif;
     font-size: 13px;
 }
 
-.sidebar-menu li a {
+.sidebar-menu li a,
+.channel-menu li a {
     padding: 4px 15px;
 }
 
@@ -69,29 +74,50 @@ button, input, textarea {
     color: #fff;
 }
 
-li a.home {
+.sidebar-menu li a.home {
     background: #fff url('/static/img/home.png') top 0px left 0px no-repeat;
     padding-left: 30px;
 }
-li a.user {
+.sidebar-menu li a.user {
     background: #fff url('/static/img/user.png') top 0px left 0px no-repeat;
     padding-left: 30px;
 }
-li a.flame {
+.sidebar-menu li a.flame {
     background: #fff url('/static/img/flame.png') top 0px left 0px no-repeat;
     padding-left: 30px;
 }
-li a.pod {
+.sidebar-menu li a.pod {
     background: #fff url('/static/img/pod.png') top 0px left 0px no-repeat;
     padding-left: 30px;
 }
-li a.clock {
+.sidebar-menu li a.clock {
     background: #fff url('/static/img/clock.png') top 0px left 0px no-repeat;
     padding-left: 30px;
 }
-li a.time {
+.sidebar-menu li a.time {
     background: #fff url('/static/img/time.png') top 0px left 0px no-repeat;
     padding-left: 30px;
+}
+
+.sidebar-menu li.active a, .sidebar-menu li a:hover, .sidebar-menu li.active a:hover, .sidebar-menu li a {
+    color: #222;
+    font-family: Roboto,arial,sans-serif;
+    font-size: 13px;
+}
+
+.sidebar-menu li a {
+    padding: 4px 15px;
+}
+
+.sidebar-menu li a:hover, .sidebar-menu li.active a:hover {
+    background: #686868;
+    color: #fff;
+}
+
+.title-menu {
+	padding: 10px;
+	color: #cc181e;
+	font-weight: 600;
 }
 
 .line {
@@ -216,4 +242,14 @@ li a.time {
     cursor: pointer;
     border-radius: 2px;
     box-shadow: 0 1px 0 rgba(0,0,0,0.05);
+}
+
+.channel-menu {
+    background: none;
+    padding: 10px;
+}
+
+.channel-menu li a.channel {
+	background: #fff url('/static/img/channel.png') top 3px left 0px no-repeat;
+    padding-left: 30px;
 }
