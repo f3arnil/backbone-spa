@@ -1,7 +1,7 @@
 module.exports = (function () {
     'use strict';
 
-    var TubeAppView = require('./views/tube-app-view');
+    var TubeAppView = require('./views/baseTubeAppView');
     var AppRouter = require('./router');
 
     function init() {
@@ -9,6 +9,7 @@ module.exports = (function () {
         var tubeAppView = new TubeAppView({router: appRouter});
 
         Backbone.history.start();
+        // Backbone.history.start({pushState: true, root: '/'});
     };
 
     return init();
