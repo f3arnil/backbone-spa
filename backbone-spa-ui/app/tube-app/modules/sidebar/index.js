@@ -6,7 +6,6 @@ module.exports = (function() {
 
     var SideBarModule = function () {
         var sideBarView = new SideBarView();
-        sideBarView.render();
     };
 
     return SideBarModule;

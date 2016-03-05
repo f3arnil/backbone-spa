@@ -4,7 +4,7 @@ module.exports = (function () {
     var HeaderViewTpl = _.template((require('tpl!../templates/header'))());
 
     var HeaderView = Backbone.View.extend({
-        el: '#header',
+        el: '#header-holder',
         template: HeaderViewTpl,
         initialize: function () {
             this.render();
