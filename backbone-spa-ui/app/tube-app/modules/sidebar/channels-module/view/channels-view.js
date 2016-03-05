@@ -4,37 +4,36 @@ module.exports = (function () {
 
     var ChannelsCollection = require('../collection/channels-collection');
 
+    var ChannelTemplate = require('tpl!../template/channel-item');
     var ChannelsTemplate = require('tpl!../template/channels-template');
-    var ChannelView = require('./channel-view.js');
 
     var channelsView = Backbone.View.extend({
         el: '#channels-view',
         template: ChannelsTemplate,
+        itemTemplate: ChannelTemplate,
         initialize: function (options) {
             this.collection = new ChannelsCollection();
-            var view = this;
-            this.collection.fetch({
-                success: function () {
-                    view.render();
-                },
-                error: function () {
-                    console.log('Error getting collection')
-                }
-            });
+            this.listenTo(this.collection, 'sync', this.onCollectionSync);
+            this.listenTo(this.collection, 'error', this.onCollectionError);
+            this.on('render:complite', this.onRenderComplite, this);
+            this.collection.fetch();
         },
-        initModules: function () {
-
+        onCollectionSync: function () {
+            this.stopListening(this.collection);
+            this.collection.fetch();
+            this.render();
+        },
+        onCollectionError: function (model, xhr) {
+            console.error(xhr.statusText + '! ' + xhr.responseText);
+        },
+        onRenderComplite: function () {
+            this.collection.each(function (item) {
+                this.$el.append(this.itemTemplate(item.toJSON()));
+            }, this);
         },
         render: function () {
-            var colView = this;
             this.$el.html(this.template());
-            this.collection.each(function (item) {
-                var view = new ChannelView({
-                    model: item
-                });
-                this.$el.append(view.render().el);
-            }, this);
-            return this;
+            this.trigger('render:complite');
         }
     });
 

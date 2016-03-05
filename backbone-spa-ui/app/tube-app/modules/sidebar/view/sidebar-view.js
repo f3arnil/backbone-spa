@@ -1,5 +1,6 @@
+'use strict';
+
 module.exports = (function () {
-    'use strict';
 
     var SideBarTpl = _.template((require('tpl!../template/sidebar-template'))());
     var ChannelsModule = require('../channels-module');
@@ -11,7 +12,9 @@ module.exports = (function () {
             this.render();
         },
         initModules: function () {
-            var channels = new ChannelsModule();
+            this.modules = {
+                channels: new ChannelsModule()
+            }
         },
         render: function () {
             this.$el.html(this.template);
