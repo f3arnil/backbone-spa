@@ -11,7 +11,7 @@ module.exports = (function () {
             this.render();
         },
         initModules: function () {
-            
+            var channels = new ChannelsModule();
         },
         render: function () {
             this.$el.html(this.template);

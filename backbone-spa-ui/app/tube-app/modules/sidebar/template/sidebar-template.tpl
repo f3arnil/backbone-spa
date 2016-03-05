@@ -8,7 +8,10 @@
             <li><a class="clock" href="#">History</a></li>
             <li><a class="time" href="#">Watch Later</a></li>
         </ul>
-
+        <div class="line"></div>
+        <div class="title-menu">Subscriptions</div>
+        <div id="channels-view">
+        </div>
         <div class="line"></div>
     </div>
 </div>
