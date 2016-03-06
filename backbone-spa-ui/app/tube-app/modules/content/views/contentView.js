@@ -2,6 +2,7 @@ module.exports = (function () {
     'use strict';
 
     var contentTpl = _.template((require('tpl!../templates/content'))());
+    //var contentTpl = require('tpl!../templates/content');
 
     var VideoListModule = require('../../videoList/');
 
