@@ -9,6 +9,7 @@ module.exports = (function () {
         el: '#left-panel',
         template: SideBarTpl,
         initialize: function (opts) {
+            console.log(opts)
             this.render();
         },
         initModules: function () {

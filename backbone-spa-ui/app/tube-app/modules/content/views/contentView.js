@@ -10,6 +10,7 @@ module.exports = (function () {
         el: '#main-article',
         template: contentTpl,
         initialize: function (opts) {
+            //_.bindAll(this);
             this.render();
         },
         initModules: function () {

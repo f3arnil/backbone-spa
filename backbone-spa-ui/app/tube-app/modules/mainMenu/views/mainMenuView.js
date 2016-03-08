@@ -13,6 +13,7 @@ module.exports = (function () {
         },
         initialize: function (opts) {
             this.render();
+            console.log(opts)
         },
         initModule: function () {
             return new ContentModule();

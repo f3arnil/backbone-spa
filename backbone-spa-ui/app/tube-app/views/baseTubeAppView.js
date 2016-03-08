@@ -1,11 +1,6 @@
 module.exports = (function () {
     'use strict';
 
-    var HeaderModule = require('../modules/header/');
-    var SearchModule = require('../modules/search/');
-    var SideBarModule = require('../modules/sidebar/');
-    var ContentModule = require('../modules/content/');
-
     var TubeAppTpl = _.template((require('tpl!../templates/tube-app-view'))());
 
     var TubeAppView = Backbone.View.extend({
@@ -13,15 +8,16 @@ module.exports = (function () {
         template: TubeAppTpl,
         modules: {},
         initialize: function (options) {
+            this.modulesNS = options.modules;
             this.router = options.router;
             //Backbone.Events.on('get:post', this.getLayout, this);
             this.render();
         },
         initModule: function () {
-            this.modules.headerModule = new HeaderModule();
-            this.modules.searchModule = new SearchModule();
-            this.modules.sidebarModule = new SideBarModule();
-            this.modules.contentModule = new ContentModule();
+            this.modules.headerModule = new this.modulesNS.headerM();
+            this.modules.searchModule = new this.modulesNS.searchM();
+            this.modules.sidebarModule = new this.modulesNS.sideBarM();
+            this.modules.contentModule = new this.modulesNS.contentM();
         },
         getLayout: function () {
             //console.log(arguments)

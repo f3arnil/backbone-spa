@@ -6,12 +6,16 @@ module.exports = (function () {
             '': 'index',
             '*actions': 'defaultAction'
         },
+        initialize: function() {
+
+        },
         index: function () {
 
         },
         defaultAction: function (actions) {
             console.log('defaultAction');
-            Backbone.Events.trigger('get:post');
+            //console.log(this);
+            //Backbone.Events.trigger('get:post');
         }
     });
 
