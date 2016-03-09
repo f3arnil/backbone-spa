@@ -9,8 +9,8 @@ var ENV_DEV = true;
 module.exports = {
     context: __dirname,
     entry: {
-        tube: path.resolve(__dirname, './app/tube-app/tube-app'),
-        admin: path.resolve(__dirname, './app/admin-app/admin-app'),
+        tube: path.resolve(__dirname, './app/tube-app/tubeApp'),
+        //admin: path.resolve(__dirname, './app/admin-app/adminAapp'),
         vendor: [
             'underscore',
             'backbone',

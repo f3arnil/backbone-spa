@@ -1,11 +1,12 @@
-'use strict'
-
 module.exports = (function () {
+    'use strict'
 
-    var SideBarView = require('./view/sidebar-view');
+    var SideBarView = require('./views/sideBarView');
 
-    var SideBarModule = function (){
-        var sideBarView = new SideBarView()
+    var SideBarModule = function () {
+        return {
+            sideBarView: new SideBarView()
+        }
     };
 
     return SideBarModule;
