@@ -1,16 +1,19 @@
 module.exports = (function () {
     'use strict';
 
-    var contentTpl = _.template((require('tpl!../templates/content'))());
-    //var contentTpl = require('tpl!../templates/content');
-
+    var contentTpl = require('tpl!../templates/content');
     var VideoListModule = require('../../videoList/');
 
     var ContentView = Backbone.View.extend({
         el: '#main-article',
         template: contentTpl,
-        initialize: function (opts) {
-            this.render();
+        initialize: function (options) {
+            this.listenTo(Backbone.Events, 'page:home', this.getContentHomePage);
+            this.listenTo(Backbone.Events, 'page:my-channel', this.getContentOtherPage);
+            this.listenTo(Backbone.Events, 'page:trending', this.getContentOtherPage);
+            this.listenTo(Backbone.Events, 'page:subscriptions', this.getContentOtherPage);
+            this.listenTo(Backbone.Events, 'page:history', this.getContentOtherPage);
+            this.listenTo(Backbone.Events, 'page:watch-later', this.getContentOtherPage);
         },
         initModules: function () {
             this.initVideoListModule();
@@ -18,14 +21,11 @@ module.exports = (function () {
         initVideoListModule: function () {
             return new VideoListModule();
         },
-        setContent: function () {
-
+        getContentOtherPage: function () {
+            this.$el.html('Empty content!');
         },
-        getContent: function () {
-
-        },
-        doAfterRender: function () {
-
+        getContentHomePage: function () {
+            this.render();
         },
         render: function () {
             this.$el.html(this.template);
