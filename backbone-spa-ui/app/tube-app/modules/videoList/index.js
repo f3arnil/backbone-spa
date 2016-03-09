@@ -4,8 +4,9 @@ module.exports = (function() {
     var VideoListView = require('./views/videos-list-view');
 
     var VideoListModule = function() {
+        //console.log(arguments[0].channel);
         return {
-            videoListView: new VideoListView()
+            videoListView: new VideoListView({channel: arguments[0].channel})
         }
     }
 

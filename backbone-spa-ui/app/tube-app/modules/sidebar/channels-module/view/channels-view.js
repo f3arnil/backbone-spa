@@ -26,8 +26,10 @@ module.exports = (function () {
 
         },
         clickChannel: function(event){
-            console.log('Click on ', event.currentTarget.innerText);
             event.preventDefault();
+            console.log('Click on ', event.currentTarget.innerText);
+            Backbone.history.navigate(event.target.hash, {trigger: true});
+            
         },
         onCollectionError: function (model, xhr) {
             console.error(xhr.statusText + '! ' + xhr.responseText);

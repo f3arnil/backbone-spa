@@ -10,26 +10,37 @@ module.exports = (function () {
         el: '#article',
         template: VideosListTemplate,
         itemTemplate: VideoListTemplate,
-        initialize: function () {
+        initialize: function (id) {
             this.collection = new VideoListCollection();
+            this.listenTo(Backbone.Events, 'page:home', this.pageHome);
+            this.listenTo(Backbone.Events, 'Channel:videos', this.onRenderComplite);
             this.listenTo(this.collection, 'sync', this.onCollectionSync);
             this.listenTo(this.collection, 'error', this.onCollectionError);
             this.on('render:complite', this.onRenderComplite, this);
             this.collection.fetch();
         },
+        listVideosLoad: function(id) {
+            this.collection.each(function (item) {
+                if (item.toJSON().channel == id) {
+                    this.$el.find('#item-article').append(this.itemTemplate(item.toJSON()));
+                }
+            }, this);
+        },
         onCollectionSync: function () {
             this.render();
+        },
+        pageHome: function(id){
+            console.log(">>>> ", id);
         },
         onCollectionError: function (model, xhr) {
             console.error(xhr.statusText + '! ' + xhr.responseText);
         },
-        onRenderComplite: function () {
-            this.collection.each(function (item) {
-                this.$el.find('#item-article').append(this.itemTemplate(item.toJSON()));
-            }, this);
+        onRenderComplite: function (id) {
+            
+            this.$el.html(this.template());
+            this.listVideosLoad(id);
         },
         render: function () {
-            this.$el.html(this.template());
             this.trigger('render:complite');
         }
     });

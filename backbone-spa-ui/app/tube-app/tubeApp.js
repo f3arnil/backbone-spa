@@ -1,8 +1,8 @@
 module.exports = (function () {
     'use strict';
 
-    var TubeAppView = require('./views/baseTubeAppView');
     var NameSpaceModulesApp = require('./nameSpaceModulesApp');
+    var TubeAppView = require('./views/baseTubeAppView');
     var AppRouter = require('./router');
 
     function init() {
