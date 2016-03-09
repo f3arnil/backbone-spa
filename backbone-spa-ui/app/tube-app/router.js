@@ -6,12 +6,14 @@ module.exports = (function () {
             '': 'index',
             '*actions': 'defaultAction'
         },
+        initialize: function() {
+            console.log('Initialize in AppRouter');
+        },
         index: function () {
-
+            console.log('Index in AppRouter');
         },
         defaultAction: function (actions) {
-            console.log('defaultAction');
-            Backbone.Events.trigger('get:post');
+            console.log('DefaultAction in AppRouter');
         }
     });
 

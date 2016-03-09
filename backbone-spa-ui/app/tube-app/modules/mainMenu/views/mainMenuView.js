@@ -1,21 +1,16 @@
 module.exports = (function () {
     'use strict';
 
-    var MainMenuTpl = _.template((require('tpl!../templates/main-menu'))());
-
-    var ContentModule = require('../../content/');
+    var mainMenuTpl = require('tpl!../templates/main-menu');
 
     var SideBarView = Backbone.View.extend({
         el: '#left-panel',
-        template: MainMenuTpl,
+        template: mainMenuTpl,
         events: {
             'click #sidebar-vertical-menu a': 'showPage'
         },
-        initialize: function (opts) {
+        initialize: function () {
             this.render();
-        },
-        initModule: function () {
-            return new ContentModule();
         },
         showPage: function (elem) {
             elem.preventDefault();
