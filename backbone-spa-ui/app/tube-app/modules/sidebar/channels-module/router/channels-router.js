@@ -4,15 +4,15 @@ module.exports = (function () {
     var ChannelsRouter = Backbone.Router.extend({
         routes: {
             'channel/:id': 'showChannel',
-            'channel/:id/videos': 'showChannelsVideos',
-            'videos/:id': 'show'
+            'channel/:id/:action': 'channelAction',
         },
         showChannel: function (id) {
             console.log('showChannel', id);
         },
-        showChannelsVideos: function (id) {
-            console.log('showChannelsVideos', id);
-        },
+        channelAction: function (id, action) {
+            var event = 'Channel:' + action;
+            Backbone.Events.trigger(event, id, action);
+        }
     });
 
     return ChannelsRouter;

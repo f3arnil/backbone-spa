@@ -1,11 +1,11 @@
 module.exports = (function () {
     'use strict';
 
-    var SearchViewTpl = _.template((require('tpl!../templates/search'))());
+    var searchViewTpl = require('tpl!../templates/search');
 
     var SearchView = Backbone.View.extend({
         el: '#search-holder',
-        template: SearchViewTpl,
+        template: searchViewTpl,
         initialize: function () {
             this.render();
         },
