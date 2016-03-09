@@ -13,6 +13,8 @@ module.exports = (function () {
             console.log('Index in AppRouter');
         },
         defaultAction: function (actions) {
+            this.navigate('#');
+            Backbone.Events.trigger('get:post');
             console.log('DefaultAction in AppRouter');
         }
     });

@@ -19,9 +19,15 @@ module.exports = (function () {
             this.collection.fetch();
         },
         onCollectionSync: function () {
-            this.stopListening(this.collection);
-            this.collection.fetch();
             this.render();
+        },
+        events: {
+            'click .channel': 'clickChannel'
+
+        },
+        clickChannel: function(event){
+            console.log('Click on ', event.currentTarget.innerText);
+            event.preventDefault();
         },
         onCollectionError: function (model, xhr) {
             console.error(xhr.statusText + '! ' + xhr.responseText);

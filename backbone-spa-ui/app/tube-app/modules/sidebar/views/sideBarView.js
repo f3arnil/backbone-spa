@@ -1,7 +1,7 @@
 module.exports = (function () {
     'use strict';
 
-    var SideBarTpl = _.template((require('tpl!../template/sidebar-template'))());
+    var SideBarTpl = require('tpl!../template/sidebar-template');
     var ChannelsModule = require('../channels-module');
     var MainMenuModule = require('../../mainMenu');
 
@@ -19,7 +19,7 @@ module.exports = (function () {
             }
         },
         render: function () {
-            this.$el.html(this.template);
+            this.$el.html(this.template());
             this.initModules();
             return this;
         }
