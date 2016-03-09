@@ -1,12 +1,14 @@
 module.exports = (function() {
-    "use strict";
-    
-    var ContentView = require('./views/content-view');
-    
+    'use strict';
+
+    var ContentView = require('./views/contentView');
+
     var ContentModule = function() {
-        var contentView = new ContentView();
-    }
-    
+        return {
+            contentView: new ContentView()
+        };
+    };
+
     return ContentModule;
-    
+
 })();

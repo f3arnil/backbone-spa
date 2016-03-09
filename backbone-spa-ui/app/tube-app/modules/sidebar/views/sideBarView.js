@@ -1,9 +1,9 @@
-'use strict';
-
 module.exports = (function () {
+    'use strict';
 
     var SideBarTpl = require('tpl!../template/sidebar-template');
     var ChannelsModule = require('../channels-module');
+    var MainMenuModule = require('../../mainMenu');
 
     var SideBarView = Backbone.View.extend({
         el: '#left-panel',
@@ -13,7 +13,8 @@ module.exports = (function () {
         },
         initModules: function () {
             this.modules = {
-                channels: new ChannelsModule()
+                channels: new ChannelsModule(),
+                mainMenu: new MainMenuModule()
             }
         },
         render: function () {

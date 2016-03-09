@@ -1,17 +1,31 @@
 module.exports = (function () {
     'use strict';
-    
+
     var contentTpl = _.template((require('tpl!../templates/content'))());
+    //var contentTpl = require('tpl!../templates/content');
+
     var VideoListModule = require('../../videoList/');
-    
+
     var ContentView = Backbone.View.extend({
         el: '#main-article',
         template: contentTpl,
-        initialize: function () {
+        initialize: function (opts) {
             this.render();
         },
         initModules: function () {
-            var videoListModule = new VideoListModule();            
+            this.initVideoListModule();
+        },
+        initVideoListModule: function () {
+            return new VideoListModule();
+        },
+        setContent: function () {
+
+        },
+        getContent: function () {
+
+        },
+        doAfterRender: function () {
+
         },
         render: function () {
             this.$el.html(this.template);
@@ -19,7 +33,7 @@ module.exports = (function () {
             return this;
         }
     });
-    
+
     return ContentView;
-    
+
 })();

@@ -14,6 +14,7 @@ module.exports = (function () {
         modules: {},
         initialize: function (options) {
             this.router = options.router;
+            //Backbone.Events.on('get:post', this.getLayout, this);
             this.render();
         },
         initModule: function () {
@@ -21,6 +22,9 @@ module.exports = (function () {
             this.modules.searchModule = new SearchModule();
             this.modules.sidebarModule = new SideBarModule();
             this.modules.contentModule = new ContentModule();
+        },
+        getLayout: function () {
+            //console.log(arguments)
         },
         render: function () {
             this.$el.html(this.template);
