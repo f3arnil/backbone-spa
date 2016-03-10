@@ -2,7 +2,7 @@
     <div class="static-sidebar">
         <ul class="sidebar-menu nav" id="sidebar-vertical-menu">
             <li class="active">
-                <a class="home" href="#" data-url="page/home">Home</a>
+                <a class="home" href="/" data-url="/">Home</a>
             </li>
             <li>
                 <a class="user" href="#" data-url="page/my-channel">My Channel</a>

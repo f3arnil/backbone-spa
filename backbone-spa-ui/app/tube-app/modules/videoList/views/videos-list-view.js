@@ -10,16 +10,16 @@ module.exports = (function () {
         el: '#article',
         template: VideosListTemplate,
         itemTemplate: VideoListTemplate,
-        initialize: function (id) {
+        initialize: function () {
             this.collection = new VideoListCollection();
-            this.listenTo(Backbone.Events, 'page:home', this.pageHome);
-            this.listenTo(Backbone.Events, 'Channel:videos', this.onRenderComplite);
+            this.listenTo(Backbone.Events, 'Channel:videos', this.listVideosLoad);
             this.listenTo(this.collection, 'sync', this.onCollectionSync);
             this.listenTo(this.collection, 'error', this.onCollectionError);
             this.on('render:complite', this.onRenderComplite, this);
             this.collection.fetch();
         },
-        listVideosLoad: function(id) {
+        listVideosLoad: function (id) {
+            this.$el.html(this.template());
             this.collection.each(function (item) {
                 if (item.toJSON().channel == id) {
                     this.$el.find('#item-article').append(this.itemTemplate(item.toJSON()));
@@ -29,16 +29,12 @@ module.exports = (function () {
         onCollectionSync: function () {
             this.render();
         },
-        pageHome: function(id){
-            console.log(">>>> ", id);
-        },
         onCollectionError: function (model, xhr) {
             console.error(xhr.statusText + '! ' + xhr.responseText);
         },
-        onRenderComplite: function (id) {
-            
+        onRenderComplite: function () {
+            //this.listVideosLoad('56d83c96dee0f9fefe633756');
             this.$el.html(this.template());
-            this.listVideosLoad(id);
         },
         render: function () {
             this.trigger('render:complite');

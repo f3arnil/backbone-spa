@@ -19,7 +19,7 @@ module.exports = (function () {
             this.initVideoListModule();
         },
         initVideoListModule: function () {
-            return new VideoListModule({channel: '56d83c963184de50d7afac35'});
+            return new VideoListModule();
         },
         getContentOtherPage: function () {
             this.$el.html('Empty content!');
