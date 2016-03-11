@@ -19,7 +19,10 @@ module.exports = (function () {
             this.initVideoListModule();
         },
         initVideoListModule: function () {
-            return new VideoListModule();
+            var videoList = new VideoListModule();
+//            console.log(videoList);
+            //videoList.videoListView.extend({test:'This is test msg'});
+            return videoList;
         },
         getContentOtherPage: function () {
             this.$el.html('Empty content!');

@@ -1,6 +1,7 @@
-module.exports = (function () {
-    'use strict';
+'use strict';
 
+module.exports = (function () {
+    
     var SideBarTpl = require('tpl!../template/sidebar-template');
     var ChannelsModule = require('../channels-module');
     var MainMenuModule = require('../../mainMenu');
@@ -9,7 +10,6 @@ module.exports = (function () {
         el: '#left-panel',
         template: SideBarTpl,
         initialize: function (opts) {
-            console.log(opts)
             this.render();
         },
         initModules: function () {
@@ -25,6 +25,12 @@ module.exports = (function () {
         }
     });
 
+//    console.log(new SideBarView());
+//    var sbv = SideBarView.extend({test: 'this is test msg', el: '#left-panel'});
+//
+//    var tstSbv = new sbv();
+//    console.log(tstSbv);
+    
     return SideBarView;
 
 })();

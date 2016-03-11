@@ -1,13 +1,17 @@
-module.exports = (function() {
+module.exports = (function () {
     'use strict';
 
     var HeaderView = require('./views/headerView');
 
-    var HeaderModule = function () {
-        return {
-            headerView: new HeaderView()
-        };
-    };
+    var Module = require('../../../common/module');
+
+    var HeaderModule = Module.extend({
+        name: 'header',
+        view: {
+            constructor: HeaderView,
+            options: {}
+        }
+    })
 
     return HeaderModule;
 
