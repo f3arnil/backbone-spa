@@ -5,7 +5,7 @@ module.exports = (function () {
     var AppRouter = require('./router');
     var HeaderModule = require('./modules/header');
     var SideBarModule = require('./modules/sidebar/');
-//    var ContentModule = require('./modules/content/');
+    //    var ContentModule = require('./modules/content/');
     var SearchModule = require('./modules/search/');
 
     var Module = require('../common/module');
@@ -42,7 +42,7 @@ module.exports = (function () {
 //                }
             ],
         });
-        console.log(app);
+        
         Backbone.history.start();
         // Backbone.history.start({pushState: true, root: '/'});
     };

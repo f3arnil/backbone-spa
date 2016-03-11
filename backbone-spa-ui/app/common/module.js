@@ -32,13 +32,15 @@ module.exports = (function () {
                 return;
             }
             var elem = this[el];
-            if (_.has(elem, 'constructor')) {
-                var Element = elem.constructor;
-                var options = elem.options || {};
-                this[el] = new Element(options);
-            }
+            if (!_.has(elem, 'constructor')) {
+                return;
+            };
+            var Element = elem.constructor;
+            var options = elem.options || {};
+            this[el] = new Element(options);
+
         }, this);
-    }
+    };
 
     Module.prototype.subModulesConstruct = function () {
         if (!this.modules || this.modules.length == 0) {
@@ -64,21 +66,21 @@ module.exports = (function () {
         this.construct();
         this.subModulesConstruct();
         this.switcher();
-        //console.log(this);
     };
 
     Module.prototype.switcher = function () {
         _.each(this.modules, function (el, index) {
-            if (_.has(el, 'switch') && el.switch) {
+            if (_.has(el, 'switchable') && el.switchable) {
                 this.listenTo(Backbone.Events, el.event, function () {
-                    console.log('Catched');
+                    console.log('Catched', arguments);
                     this['currentModule'] = new el.module();
                 })
             }
 
             //this[el.name] = new el.module();
         }, this)
-    }
+    };
+
     return Module;
 
 })();
