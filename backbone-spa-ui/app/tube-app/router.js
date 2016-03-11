@@ -8,8 +8,11 @@ module.exports = (function () {
         },
         initialize: function() {
             console.log('Initialize in AppRouter');
+            Backbone.Events.trigger('app:start');
         },
         index: function () {
+            Backbone.Events.trigger('page:home');
+            Backbone.Events.trigger('show:sidebar');
             console.log('Index in AppRouter');
             Backbone.Events.trigger('page:home');
         },
