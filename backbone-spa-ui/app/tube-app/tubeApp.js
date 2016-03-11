@@ -42,7 +42,7 @@ module.exports = (function () {
 //                }
             ],
         });
-        
+
         Backbone.history.start();
         // Backbone.history.start({pushState: true, root: '/'});
     };

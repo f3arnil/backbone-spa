@@ -51,8 +51,11 @@ module.exports = (function () {
         this.modules.sort(this.compareWeight);
         _.each(this.modules, function (el, index) {
             var tmp = new el.module();
-            if (!_.has(el, 'switchable') || !el.switchable)
-                this[el.name] = new el.module(tmp.options);
+            if (!_.has(el, 'switchable') || !el.switchable){
+                var module = new el.module(tmp.options);
+                this[module.name] = module;
+            }
+                
         }, this);
 
     };
@@ -76,8 +79,6 @@ module.exports = (function () {
                     this['currentModule'] = new el.module();
                 })
             }
-
-            //this[el.name] = new el.module();
         }, this)
     };
 
