@@ -13,6 +13,7 @@ module.exports = (function () {
     function init() {
 
         var app = new Module({
+            name:'app',
             view: {
                 constructor: TubeAppView,
                 options: {}
@@ -42,6 +43,7 @@ module.exports = (function () {
                 }
             ],
         });
+
         console.log(app);
         Backbone.history.start();
         // Backbone.history.start({pushState: true, root: '/'});

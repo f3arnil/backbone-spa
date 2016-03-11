@@ -6,6 +6,7 @@ module.exports = (function () {
         if (params) {
             this.view = {}
             this.modules = [];
+            this.currentModule = {};
             _.extend(this, params);
         }
         this.init();
@@ -50,12 +51,12 @@ module.exports = (function () {
 
         this.modules.sort(this.compareWeight);
         _.each(this.modules, function (el, index) {
-            var tmp = new el.module();
-            if (!_.has(el, 'switchable') || el.switchable){
+            if (!_.has(el, 'switchable') || el.switchable) {
+                var tmp = new el.module();
                 var module = new el.module(tmp.options);
                 this[module.name] = module;
             }
-                
+
         }, this);
 
     };
@@ -76,6 +77,10 @@ module.exports = (function () {
             if (_.has(el, 'switchable') && el.switchable) {
                 this.listenTo(Backbone.Events, el.event, function () {
                     console.log('Catched', arguments);
+                    if (_.has(this.currentModule, 'view')) {
+                        this.currentModule.view.remove();
+                        this.currentModule = {};
+                    }
                     this['currentModule'] = new el.module();
                 })
             }
