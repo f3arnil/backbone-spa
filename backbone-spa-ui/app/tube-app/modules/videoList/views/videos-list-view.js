@@ -6,10 +6,6 @@ module.exports = (function () {
     var VideoListView = require('./video-list-view.js');
     var VideoListCollection = require('../collection/video-list-collection');
     
-    var Module = require('../../commonModule');
-    
-    console.log(Module);
-
     var VideosListView = Backbone.View.extend({
         el: '#article',
         template: VideosListTemplate,

@@ -5,7 +5,7 @@ module.exports = (function () {
     var AppRouter = require('./router');
     var HeaderModule = require('./modules/header');
     var SideBarModule = require('./modules/sidebar/');
-//    var ContentModule = require('./modules/content/');
+    var ContentModule = require('./modules/content/');
     var SearchModule = require('./modules/search/');
 
     var Module = require('../common/module');
@@ -36,13 +36,14 @@ module.exports = (function () {
                     module: SearchModule,
                     weight: 2
                 },
-//                {
-//                    module: ContentModule,
-//                    weight: 2
-//                }
+                {
+                    module: ContentModule,
+                    weight: 2
+                }
             ],
         });
         console.log(app);
+        setTimeout(function(){console.log(app)}, 4000);
         Backbone.history.start();
         // Backbone.history.start({pushState: true, root: '/'});
     };
