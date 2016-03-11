@@ -5,6 +5,10 @@ module.exports = (function () {
     var VideoListTemplate = require('tpl!../templates/video-list');
     var VideoListView = require('./video-list-view.js');
     var VideoListCollection = require('../collection/video-list-collection');
+    
+    var Module = require('../../commonModule');
+    
+    console.log(Module);
 
     var VideosListView = Backbone.View.extend({
         el: '#article',
@@ -33,7 +37,6 @@ module.exports = (function () {
             console.error(xhr.statusText + '! ' + xhr.responseText);
         },
         onRenderComplite: function () {
-            //this.listVideosLoad('56d83c96dee0f9fefe633756');
             this.$el.html(this.template());
         },
         render: function () {
@@ -41,6 +44,7 @@ module.exports = (function () {
         }
     });
 
+        
     return VideosListView;
 
 })();
