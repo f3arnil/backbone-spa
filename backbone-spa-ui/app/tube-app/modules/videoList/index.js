@@ -2,12 +2,15 @@ module.exports = (function() {
     'use strict';
 
     var VideoListView = require('./views/videos-list-view');
+    var Module = require('../../../common/module');
 
-    var VideoListModule = function() {
-        return {
-            videoListView: new VideoListView()
+    var VideoListModule = Module.extend({
+        name: 'videoList',
+        view: {
+            constructor: VideoListView,
+            options: {}
         }
-    }
+    })
 
     return VideoListModule;
 

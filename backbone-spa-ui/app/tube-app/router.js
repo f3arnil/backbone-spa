@@ -14,6 +14,7 @@ module.exports = (function () {
             Backbone.Events.trigger('page:home');
             Backbone.Events.trigger('show:sidebar', '1',2);
             console.log('Index in AppRouter');
+            Backbone.Events.trigger('page:home');
         },
         defaultAction: function (actions) {
             this.navigate('#');
