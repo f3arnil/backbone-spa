@@ -13,7 +13,7 @@ module.exports = (function () {
         },
         modules: [
             {
-                switchable: false,
+                switchable: true,
                 event: 'show:listVideo',
                 module: VideoListModule,
                 weight: 3

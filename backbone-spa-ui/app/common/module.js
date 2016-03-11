@@ -51,7 +51,7 @@ module.exports = (function () {
         this.modules.sort(this.compareWeight);
         _.each(this.modules, function (el, index) {
             var tmp = new el.module();
-            if (!_.has(el, 'switchable') || !el.switchable){
+            if (!_.has(el, 'switchable') || el.switchable){
                 var module = new el.module(tmp.options);
                 this[module.name] = module;
             }
