@@ -13,15 +13,17 @@ module.exports = (function () {
         initialize: function () {
             console.log('Init VideosListView');
             this.collection = new VideoListCollection();
-//            this.listenTo(Backbone.Events, 'Channel:videos', this.listVideosLoad);
+            this.listenTo(Backbone.Events, 'Channel:videos', this.listVideosLoad);
             this.listenTo(this.collection, 'sync', this.onCollectionSync);
             this.listenTo(this.collection, 'error', this.onCollectionError);
             this.on('render:complite', this.onRenderComplite, this);
             this.collection.fetch();
-//            this.render();
         },
         listVideosLoad: function (id) {
-            //this.$el.html(this.template());
+            if (!id) {
+                var id = this.collection.toJSON()[0].channel;
+            }
+            this.$el.html(this.template());
             this.collection.each(function (item) {
                 if (item.toJSON().channel == id) {
                     this.$el.find('#item-article').append(this.itemTemplate(item.toJSON()));
@@ -35,13 +37,7 @@ module.exports = (function () {
             console.error(xhr.statusText + '! ' + xhr.responseText);
         },
         onRenderComplite: function () {
-            console.log('Render complite');
-            this.collection.each(function (item) {
-//                if (item.toJSON().channel == id) {
-                    this.$el.find('#item-article').append(this.itemTemplate(item.toJSON()));
-//                }
-            }, this);
-//            this.$el.html(this.template());
+            this.listVideosLoad();
         },
         render: function () {
             this.$el.html(this.template());
