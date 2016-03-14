@@ -29,7 +29,7 @@ module.exports = (function () {
         var defaultProp = ['view', 'router']
         _.each(defaultProp, function (el) {
             if (!(el in this)) {
-                console.log('No ' + el + 'in ' + this.name);
+                //console.log('No ' + el + 'in ' + this.name);
                 return;
             }
             var elem = this[el];
@@ -45,17 +45,19 @@ module.exports = (function () {
 
     Module.prototype.subModulesConstruct = function () {
         if (!this.modules || this.modules.length == 0) {
-            console.log(this.name, ': No modules param or empty');
+            //console.log(this.name, ': No modules param or empty');
             return;
         };
 
         this.modules.sort(this.compareWeight);
         _.each(this.modules, function (el, index) {
-            if (!_.has(el, 'switchable') || el.switchable) {
-                var tmp = new el.module();
-                var module = new el.module(tmp.options);
-                this[module.name] = module;
-            }
+            
+            if (_.has(el, 'switchable') || el.switchable) return;
+
+            var tmp = new el.module();
+            var module = new el.module(tmp.options);
+            this[module.name] = module;
+
 
         }, this);
 
@@ -76,13 +78,16 @@ module.exports = (function () {
         _.each(this.modules, function (el, index) {
             if (_.has(el, 'switchable') && el.switchable) {
                 this.listenTo(Backbone.Events, el.event, function () {
-                    console.log('Catched', arguments);
-                    if (_.has(this.currentModule, 'view')) {
-                        this.currentModule.view.remove();
-                        this.currentModule = {};
-                    }
+                    console.log('Catched', el.event);
+//                    if (_.has(this.currentModule, 'view')) {
+//                        console.log('Remove existing current.', this.currentModule);
+//                        this.currentModule.view.off();
+//                        this.currentModule.view.remove();
+//                        this.currentModule = {};
+//                    }
                     this['currentModule'] = new el.module();
-                })
+                    this[this.currentModule.name] = this.currentModule;
+                }, this)
             }
         }, this)
     };

@@ -28,8 +28,6 @@ module.exports = (function () {
                     weight: 1
                 },
                 {
-                    switchable: true,
-                    event: 'show:sidebar',
                     module: SideBarModule,
                     weight: 3
                 },
@@ -45,6 +43,7 @@ module.exports = (function () {
         });
 
         console.log(app);
+        setTimeout(function(){console.log(app)}, 11000);
         Backbone.history.start();
         // Backbone.history.start({pushState: true, root: '/'});
     };

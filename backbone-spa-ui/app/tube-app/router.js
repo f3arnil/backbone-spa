@@ -11,14 +11,12 @@ module.exports = (function () {
             Backbone.Events.trigger('app:start');
         },
         index: function () {
-            Backbone.Events.trigger('page:home');
-            Backbone.Events.trigger('show:sidebar', '1',2);
             console.log('Index in AppRouter');
             Backbone.Events.trigger('page:home');
         },
         defaultAction: function (actions) {
             this.navigate('#');
-            Backbone.Events.trigger('get:post');
+//            Backbone.Events.trigger('get:post');
             console.log('DefaultAction in AppRouter');
         }
     });
