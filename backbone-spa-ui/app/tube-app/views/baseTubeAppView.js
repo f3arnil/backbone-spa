@@ -8,10 +8,12 @@ module.exports = (function () {
         template: TubeAppTpl,
         modules: {},
         initialize: function (options) {
+            _.extend(this,options);
             this.render();
         },
         render: function () {
-            this.$el.html(this.template());
+            this.$el.html(this.template);
+            Backbone.Events.trigger(this.onLoadEvent);
             return this;
         }
     });

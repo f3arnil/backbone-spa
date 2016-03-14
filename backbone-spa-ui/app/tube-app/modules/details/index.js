@@ -8,7 +8,7 @@ module.exports = (function() {
         name: 'details',
         view: {
             constructor: DetailsView,
-            options: {}
+            options: { onLoadEvent: 'details:loaded' }
         }
     })
 

@@ -9,28 +9,17 @@ module.exports = (function () {
     var SideBarView = Backbone.View.extend({
         el: '#left-panel',
         template: SideBarTpl,
-        initialize: function (opts) {
+        initialize: function (options) {
+            _.extend(this,options);
             this.render();
         },
-        initModules: function () {
-            this.modules = {
-                channels: new ChannelsModule(),
-                mainMenu: new MainMenuModule()
-            }
-        },
         render: function () {
-            this.$el.html(this.template());
-            this.initModules();
+            this.$el.html(this.template);
+            Backbone.Events.trigger(this.onLoadEvent);
             return this;
         }
     });
 
-//    console.log(new SideBarView());
-//    var sbv = SideBarView.extend({test: 'this is test msg', el: '#left-panel'});
-//
-//    var tstSbv = new sbv();
-//    console.log(tstSbv);
-    
     return SideBarView;
 
 })();

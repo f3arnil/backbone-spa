@@ -14,28 +14,18 @@ module.exports = (function () {
 
     Module.extend = Backbone.View.extend;
     Module.prototype.listenTo = Backbone.Events.listenTo;
-    Module.prototype.on = Backbone.Events.on;
-    Module.prototype.off = Backbone.Events.off;
-    console.log(Backbone.Events);
+//    Module.prototype.on = Backbone.Events.on;
+//    Module.prototype.off = Backbone.Events.off;
+//    console.log(Backbone.Events);
 
+    
     Module.prototype.init = function () {
-        console.log('Init ', this.name);
-        this.setDefault();
-
+        console.log('Init >>', this.name);
         var loaded = this.name + ':loaded';
-
-        this.listenTo(Backbone.Events, loaded, function () {
-            console.log(this.name, ' is loaded');
-//            this.subModulesConstruct();
-//            this.switcher();
-        });
-        
-        this.subModulesConstruct();
-        this.switcher();
-
-
+        this.listenTo(Backbone.Events, loaded, this.onLoyoutViewLoad);
+        this.setDefault();                  // Loaded layoutview and router
     };
-
+    
     Module.prototype.setDefault = function () {
         var defaultProp = ['layoutView', 'router']
         _.each(defaultProp, function (property) {
@@ -53,6 +43,12 @@ module.exports = (function () {
         }, this);
     };
 
+    Module.prototype.onLoyoutViewLoad = function() {
+        console.log(this.name, ' is loaded');
+        this.subModulesConstruct();
+        this.switcher();
+    }
+    
     Module.prototype.subModulesConstruct = function () {
         if (!this.modules || this.modules.length == 0) {
             //console.log(this.name, ': No modules param or empty');

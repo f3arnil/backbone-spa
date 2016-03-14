@@ -12,6 +12,7 @@ module.exports = (function () {
         template: ChannelsTemplate,
         itemTemplate: ChannelTemplate,
         initialize: function (options) {
+            console.log('Init ChannelsView');
             this.collection = new ChannelsCollection();
             this.listenTo(this.collection, 'sync', this.onCollectionSync);
             this.listenTo(this.collection, 'error', this.onCollectionError);
@@ -23,13 +24,11 @@ module.exports = (function () {
         },
         events: {
             'click .channel': 'clickChannel'
-
         },
         clickChannel: function(event){
             event.preventDefault();
             console.log('Click on ', event.currentTarget.innerText);
             Backbone.history.navigate(event.target.hash, {trigger: true});
-            
         },
         onCollectionError: function (model, xhr) {
             console.error(xhr.statusText + '! ' + xhr.responseText);

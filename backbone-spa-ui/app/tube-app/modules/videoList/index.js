@@ -8,7 +8,7 @@ module.exports = (function() {
         name: 'videoList',
         layoutView: {
             constructor: VideoListView,
-            options: {}
+            options: { onLoadEvent: 'videoList:loaded' }
         }
     })
 

@@ -16,7 +16,7 @@ module.exports = (function () {
             name:'app',
             layoutView: {
                 constructor: TubeAppView,
-                options: {}
+                options: { onLoadEvent: 'app:loaded' }
             },
             router: {
                 constructor: AppRouter,
@@ -43,7 +43,7 @@ module.exports = (function () {
         });
 
         console.log(app);
-        setTimeout(function(){console.log(app)}, 5000);
+        //setTimeout(function(){console.log(app)}, 5000);
         Backbone.history.start();
         // Backbone.history.start({pushState: true, root: '/'});
     };

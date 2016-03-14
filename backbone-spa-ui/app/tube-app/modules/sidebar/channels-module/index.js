@@ -2,15 +2,24 @@
 
 module.exports = (function () {
 
-    var ChannelsView = require('./view/channels-view');
+    var ChannelsView = require('./views/channels-view');
     var ChannelsRouter = require('./router/channels-router');
+    var Module = require('../../../../common/module');
 
-    var ChannelsModule = function () {
-        return {
-            router: new ChannelsRouter(),
-            channelsView: new ChannelsView()
+    var ChannelsModule = Module.extend({
+        name: 'channels',
+        layoutView: {
+            constructor: ChannelsView,
+            options: {
+                onLoadEvent: 'channels:loaded'
+            },
+
+        },
+        router: {
+            constructor: ChannelsRouter,
+            options: {}
         }
-    };
+    });
 
     return ChannelsModule;
 

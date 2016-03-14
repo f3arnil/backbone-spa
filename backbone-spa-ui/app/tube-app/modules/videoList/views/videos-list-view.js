@@ -26,7 +26,8 @@ module.exports = (function () {
             this.$el.html(this.template());
             this.collection.each(function (item) {
                 if (item.toJSON().channel == id) {
-                    this.$el.find('#item-article').append(this.itemTemplate(item.toJSON()));
+                    this.$el.find('#item-article')
+                        .append(this.itemTemplate(item.toJSON()));
                 }
             }, this);
         },
