@@ -11,6 +11,7 @@ module.exports = (function () {
         template: VideosListTemplate,
         itemTemplate: VideoListTemplate,
         initialize: function () {
+            console.log('Init VideosListView');
             this.collection = new VideoListCollection();
 //            this.listenTo(Backbone.Events, 'Channel:videos', this.listVideosLoad);
             this.listenTo(this.collection, 'sync', this.onCollectionSync);
