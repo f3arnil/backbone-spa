@@ -54,8 +54,7 @@ module.exports = (function () {
             
             if (_.has(el, 'switchable') || el.switchable) return;
 
-            var tmp = new el.module();
-            var module = new el.module(tmp.options);
+            var module = new el.module();
             this[module.name] = module;
 
 
@@ -68,6 +67,7 @@ module.exports = (function () {
     };
 
     Module.prototype.init = function () {
+        console.log('Init ', this.name);
         this.setDefault();
         this.construct();
         this.subModulesConstruct();
@@ -77,16 +77,20 @@ module.exports = (function () {
     Module.prototype.switcher = function () {
         _.each(this.modules, function (el, index) {
             if (_.has(el, 'switchable') && el.switchable) {
+                console.log('Set listener to ', el.event);
                 this.listenTo(Backbone.Events, el.event, function () {
                     console.log('Catched', el.event);
-//                    if (_.has(this.currentModule, 'view')) {
-//                        console.log('Remove existing current.', this.currentModule);
-//                        this.currentModule.view.off();
-//                        this.currentModule.view.remove();
-//                        this.currentModule = {};
-//                    }
-                    this['currentModule'] = new el.module();
-                    this[this.currentModule.name] = this.currentModule;
+                    
+                    if (_.has(this.currentModule, 'view')) {
+                        console.log('Remove existing current.', this.currentModule);
+                        //this.currentModule.view.off();
+                        //this.currentModule.view.remove();
+                        //this.currentModule = {};
+                    }
+                    
+                    var module = new el.module();
+                    this['currentModule'] = module;
+
                 }, this)
             }
         }, this)

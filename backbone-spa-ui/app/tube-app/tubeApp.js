@@ -10,7 +10,7 @@ module.exports = (function () {
 
     var Module = require('../common/module');
 
-    function init() {
+//    function init() {
 
         var app = new Module({
             name:'app',
@@ -46,8 +46,8 @@ module.exports = (function () {
         setTimeout(function(){console.log(app)}, 6000);
         Backbone.history.start();
         // Backbone.history.start({pushState: true, root: '/'});
-    };
+//    };
 
-    return init();
+//    return init();
 
 })();
