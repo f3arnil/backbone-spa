@@ -6,7 +6,7 @@ module.exports = (function () {
 
     var SideBarModule = Module.extend({
         name: 'sidebar',
-        view: {
+        layoutView: {
             constructor: SideBarView,
             options: {}
         }

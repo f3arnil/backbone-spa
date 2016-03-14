@@ -6,7 +6,7 @@ module.exports = (function () {
 
     var SearchModule = Module.extend({
         name: 'search',
-        view: {
+        layoutView: {
             constructor: SearchView,
             options: {}
         }

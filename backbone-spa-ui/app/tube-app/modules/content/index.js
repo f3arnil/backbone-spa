@@ -7,9 +7,9 @@ module.exports = (function () {
 
     var ContentModule = Module.extend({
         name: 'content',
-        view: {
+        layoutView: {
             constructor: ContentView,
-            options: {}
+            options: { onLoadEvent: 'content:loaded' }
         },
         modules: [
             {
