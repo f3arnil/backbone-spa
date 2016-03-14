@@ -1,0 +1,1 @@
+<div style="float: right;"><h3>DETAILS MODULE!</h3></div>

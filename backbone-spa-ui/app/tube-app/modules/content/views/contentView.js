@@ -33,7 +33,8 @@ module.exports = (function () {
         render: function () {
             this.$el.html(this.template);
 //            this.initModules();
-            setTimeout(function(){Backbone.Events.trigger('show:listVideo')}, 10000);
+            setTimeout(function(){Backbone.Events.trigger('show:listVideo')}, 2000);
+            setTimeout(function(){Backbone.Events.trigger('show:details')}, 4000);
             return this;
         }
     });
