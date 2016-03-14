@@ -8,12 +8,15 @@ module.exports = (function () {
         el: '#main-article',
         template: contentTpl,
         initialize: function (options) {
-            this.listenTo(Backbone.Events, 'page:home', this.getContentHomePage);
-            this.listenTo(Backbone.Events, 'page:my-channel', this.getContentOtherPage);
-            this.listenTo(Backbone.Events, 'page:trending', this.getContentOtherPage);
-            this.listenTo(Backbone.Events, 'page:subscriptions', this.getContentOtherPage);
-            this.listenTo(Backbone.Events, 'page:history', this.getContentOtherPage);
-            this.listenTo(Backbone.Events, 'page:watch-later', this.getContentOtherPage);
+            _.extend(this,options);
+            this.render();
+            
+//            this.listenTo(Backbone.Events, 'page:home', this.getContentHomePage);
+//            this.listenTo(Backbone.Events, 'page:my-channel', this.getContentOtherPage);
+//            this.listenTo(Backbone.Events, 'page:trending', this.getContentOtherPage);
+//            this.listenTo(Backbone.Events, 'page:subscriptions', this.getContentOtherPage);
+//            this.listenTo(Backbone.Events, 'page:history', this.getContentOtherPage);
+//            this.listenTo(Backbone.Events, 'page:watch-later', this.getContentOtherPage);
         },
         //        initModules: function () {
         //            this.initVideoListModule();
@@ -32,14 +35,17 @@ module.exports = (function () {
         },
         render: function () {
             this.$el.html(this.template);
-            //            this.initModules();
-//            setTimeout(function () {
-//                console.log('Trigger event show:listVideo');
-                Backbone.Events.trigger('show:listVideo');
-//            }, 2000);
-//            setTimeout(function () {
-//                Backbone.Events.trigger('show:details')
-//            }, 4000);
+            console.log('On load event = ', this.onLoadEvent);
+            var that = this;
+            setTimeout(function () {
+                console.log('Trigger event show:listVideo');
+                Backbone.Events.trigger('show:listVideo')
+            }, 2000);
+            setTimeout(function () {
+                console.log('Trigger event ', that.onLoadEvent);
+                Backbone.Events.trigger(that.onLoadEvent);
+            }, 4000);
+
             return this;
         }
     });

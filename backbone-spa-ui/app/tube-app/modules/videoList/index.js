@@ -6,7 +6,7 @@ module.exports = (function() {
 
     var VideoListModule = Module.extend({
         name: 'videoList',
-        view: {
+        layoutView: {
             constructor: VideoListView,
             options: {}
         }

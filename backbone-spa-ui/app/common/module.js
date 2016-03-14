@@ -14,32 +14,42 @@ module.exports = (function () {
 
     Module.extend = Backbone.View.extend;
     Module.prototype.listenTo = Backbone.Events.listenTo;
+    Module.prototype.on = Backbone.Events.on;
+    Module.prototype.off = Backbone.Events.off;
+    console.log(Backbone.Events);
 
-    Module.prototype.construct = function () {
-        _.each(this, function (el, index) {
-            if (_.has(el, 'constructor')) {
-                var Element = el.constructor;
-                var options = el.options || {};
-                this[index] = new Element(options);
-            }
-        }, this);
+    Module.prototype.init = function () {
+        console.log('Init ', this.name);
+        this.setDefault();
+
+        var loaded = this.name + ':loaded';
+
+        this.listenTo(Backbone.Events, loaded, function () {
+            console.log(this.name, ' is loaded');
+//            this.subModulesConstruct();
+//            this.switcher();
+        });
+        
+        this.subModulesConstruct();
+        this.switcher();
+
+
     };
 
     Module.prototype.setDefault = function () {
-        var defaultProp = ['view', 'router']
-        _.each(defaultProp, function (el) {
-            if (!(el in this)) {
-                //console.log('No ' + el + 'in ' + this.name);
+        var defaultProp = ['layoutView', 'router']
+        _.each(defaultProp, function (property) {
+            if (!(property in this)) {
+                //console.log('No ' + property + 'in ' + this.name);
                 return;
             }
-            var elem = this[el];
+            var elem = this[property];
             if (!_.has(elem, 'constructor')) {
                 return;
             };
             var Element = elem.constructor;
             var options = elem.options || {};
-            this[el] = new Element(options);
-
+            this[property] = new Element(options);
         }, this);
     };
 
@@ -50,11 +60,11 @@ module.exports = (function () {
         };
 
         this.modules.sort(this.compareWeight);
-        _.each(this.modules, function (el, index) {
-            
-            if (_.has(el, 'switchable') || el.switchable) return;
+        _.each(this.modules, function (object, index) {
 
-            var module = new el.module();
+            if (_.has(object, 'switchable') || object.switchable) return;
+
+            var module = new object.module();
             this[module.name] = module;
 
 
@@ -66,29 +76,23 @@ module.exports = (function () {
         return moduleA.weight - moduleB.weight;
     };
 
-    Module.prototype.init = function () {
-        console.log('Init ', this.name);
-        this.setDefault();
-        this.construct();
-        this.subModulesConstruct();
-        this.switcher();
-    };
+
 
     Module.prototype.switcher = function () {
-        _.each(this.modules, function (el, index) {
-            if (_.has(el, 'switchable') && el.switchable) {
-                console.log('Set listener to ', el.event);
-                this.listenTo(Backbone.Events, el.event, function () {
-                    console.log('Catched', el.event);
-                    
+        _.each(this.modules, function (object, index) {
+            if (_.has(object, 'switchable') && object.switchable) {
+                console.log('Set listener to ', object.event);
+                this.listenTo(Backbone.Events, object.event, function () {
+                    console.log('Catched', object.event);
+
                     if (_.has(this.currentModule, 'view')) {
-                        console.log('Remove existing current.', this.currentModule);
-                        //this.currentModule.view.off();
-                        //this.currentModule.view.remove();
-                        //this.currentModule = {};
+                        //                        console.log('Remove existing current.', this.currentModule);
+                        //                        this.currentModule.view.off();
+                        //                        this.currentModule.view.remove();
+                        //                        this.currentModule = {};
                     }
-                    
-                    var module = new el.module();
+
+                    var module = new object.module();
                     this['currentModule'] = module;
 
                 }, this)
@@ -99,3 +103,14 @@ module.exports = (function () {
     return Module;
 
 })();
+
+
+//    Module.prototype.construct = function () {
+//        _.each(this, function (el, index) {
+//            if (_.has(el, 'constructor')) {
+//                var Element = el.constructor;
+//                var options = el.options || {};
+//                this[index] = new Element(options);
+//            }
+//        }, this);
+//    };

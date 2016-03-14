@@ -10,11 +10,11 @@ module.exports = (function () {
 
     var Module = require('../common/module');
 
-//    function init() {
+    function init() {
 
         var app = new Module({
             name:'app',
-            view: {
+            layoutView: {
                 constructor: TubeAppView,
                 options: {}
             },
@@ -43,11 +43,11 @@ module.exports = (function () {
         });
 
         console.log(app);
-        setTimeout(function(){console.log(app)}, 6000);
+        setTimeout(function(){console.log(app)}, 5000);
         Backbone.history.start();
         // Backbone.history.start({pushState: true, root: '/'});
-//    };
+    };
 
-//    return init();
+    return init();
 
 })();

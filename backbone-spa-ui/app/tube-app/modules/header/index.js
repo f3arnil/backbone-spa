@@ -7,7 +7,7 @@ module.exports = (function () {
 
     var HeaderModule = Module.extend({
         name: 'header',
-        view: {
+        layoutView: {
             constructor: HeaderView,
             options: {}
         }
