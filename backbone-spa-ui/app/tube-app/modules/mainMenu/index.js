@@ -1,16 +1,23 @@
-module.exports = (function() {
+module.exports = (function () {
     'use strict';
 
+    var Module = require('../../../common/module');
     var MainMenuRouter = require('./router/router');
     var MainMenuView = require('./views/mainMenuView');
 
-    var MainMenuModule = function () {
-        var mainMenuRouter = new MainMenuRouter();
-
-        return {
-            mainMenuView: new MainMenuView({router: mainMenuRouter})
-        };
-    };
+    var MainMenuModule = Module.extend({
+        name: 'mainMenu',
+        layoutView: {
+            constructor: MainMenuView,
+            options: {
+                onLoadEvent: 'mainMenu:loaded'
+            }
+        },
+        router: {
+            constructor: MainMenuRouter,
+            options: {}
+        }
+    })
 
     return MainMenuModule;
 

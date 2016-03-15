@@ -10,6 +10,7 @@ module.exports = (function () {
             console.log('showChannel', id);
         },
         channelAction: function (id, action) {
+            console.log('Router channel <<<<<<< ');
             var event = 'Channel:' + action;
             Backbone.Events.trigger(event, id, action);
         }

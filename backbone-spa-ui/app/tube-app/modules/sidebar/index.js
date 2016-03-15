@@ -16,14 +16,14 @@ module.exports = (function () {
         },
         modules: [
             {
-                switchable: true,
-                event: 'show:mainMenu',
+//                switchable: false,
+//                event: 'show:mainMenu',
                 module: MainMenuModule,
                 weight: 2
             },
             {
-                switchable: true,
-                event: 'show:channels',
+//                switchable: false,
+//                event: 'show:channels',
                 module: ChannelsModule,
                 weight: 3
             }

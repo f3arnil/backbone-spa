@@ -36,7 +36,7 @@ module.exports = (function () {
 //                Backbone.Events.trigger(that.onLoadEvent);
 //            }, 4000);
             Backbone.Events.trigger(this.onLoadEvent);
-
+            Backbone.Events.trigger('show:listVideo');
             return this;
         }
     });

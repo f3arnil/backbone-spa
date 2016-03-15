@@ -43,8 +43,7 @@ module.exports = (function () {
         });
 
         console.log(app);
-        //setTimeout(function(){console.log(app)}, 5000);
-        Backbone.history.start();
+        setTimeout(function(){Backbone.history.start();}, 2000);
         // Backbone.history.start({pushState: true, root: '/'});
     };
 

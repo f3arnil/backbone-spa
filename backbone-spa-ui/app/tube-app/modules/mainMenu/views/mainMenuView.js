@@ -9,7 +9,8 @@ module.exports = (function () {
         events: {
             'click #sidebar-vertical-menu a': 'showPage'
         },
-        initialize: function () {
+        initialize: function (options) {
+            _.extend(this,options);
             this.render();
         },
         showPage: function (elem) {
@@ -19,6 +20,7 @@ module.exports = (function () {
         },
         render: function () {
             this.$el.prepend(this.template);
+            Backbone.Events.trigger(this.onLoadEvent);
             return this;
         }
     });
