@@ -12,7 +12,7 @@ module.exports = (function () {
         template: ChannelsTemplate,
         itemTemplate: ChannelTemplate,
         initialize: function (options) {
-            console.log('Init ChannelsView');
+            //console.log('Init ChannelsView');
             this.collection = new ChannelsCollection();
             this.listenTo(this.collection, 'sync', this.onCollectionSync);
             this.listenTo(this.collection, 'error', this.onCollectionError);

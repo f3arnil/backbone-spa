@@ -14,20 +14,20 @@ module.exports = (function () {
                 onLoadEvent: 'sidebar:loaded'
             }
         },
-        modules: [
-            {
-//                switchable: false,
-//                event: 'show:mainMenu',
-                module: MainMenuModule,
-                weight: 2
-            },
-            {
-//                switchable: false,
-//                event: 'show:channels',
-                module: ChannelsModule,
-                weight: 3
-            }
-        ]
+//         modules: [
+//             {
+// //                switchable: false,
+// //                event: 'show:mainMenu',
+//                 module: MainMenuModule,
+//                 weight: 6
+//             },
+//             {
+// //                switchable: false,
+// //                event: 'show:channels',
+//                 module: ChannelsModule,
+//                 weight: 7
+//             }
+//         ]
     })
 
     return SideBarModule;

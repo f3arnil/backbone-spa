@@ -13,6 +13,7 @@ module.exports = (function () {
         render: function () {
             this.$el.html(this.template);
             Backbone.Events.trigger(this.onLoadEvent);
+            Backbone.Events.trigger('submodule:loaded');
             return this;
         }
     });

@@ -23,27 +23,28 @@ module.exports = (function () {
                 options: {}
             },
             modules: [
-                {
-                    module: HeaderModule,
-                    weight: 1
-                },
-                {
-                    module: SideBarModule,
-                    weight: 3
-                },
-                {
-                    module: SearchModule,
-                    weight: 2
-                },
+                // {
+                //     module: HeaderModule,
+                //     weight: 1
+                // },
+                // {
+                //     module: SideBarModule,
+                //     weight: 3
+                // },
+                // {
+                //     module: SearchModule,
+                //     weight: 2
+                // },
                 {
                     module: ContentModule,
-                    weight: 2
+                    weight: 3
                 }
             ],
         });
 
-        console.log(app);
-        setTimeout(function(){Backbone.history.start();}, 2000);
+        //console.log(app);
+        //setTimeout(function(){Backbone.history.start();}, 2000);
+        Backbone.history.start();
         // Backbone.history.start({pushState: true, root: '/'});
     };
 

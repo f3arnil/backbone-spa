@@ -8,7 +8,7 @@ module.exports = (function () {
         name: 'search',
         layoutView: {
             constructor: SearchView,
-            options: {}
+            options: { onLoadEvent: 'search:loaded' }
         }
     })
 
