@@ -37,7 +37,6 @@ module.exports = (function () {
         },
         clickVideo: function (event) {
             event.preventDefault();
-            console.log('click video');
             Backbone.Events.trigger('show:details');
             Backbone.history.navigate(event.target.hash, {trigger: true});
         },

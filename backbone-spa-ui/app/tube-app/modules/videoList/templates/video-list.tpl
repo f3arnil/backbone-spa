@@ -7,7 +7,6 @@
         <ul class="meta-info">
             <li>3 days ago</li>
             <li>1 730 107 views</li>
-
         </ul>
         <div class="description"><%= description %></div>
     </div>
