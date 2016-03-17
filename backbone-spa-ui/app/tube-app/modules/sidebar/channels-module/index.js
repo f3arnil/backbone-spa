@@ -13,7 +13,6 @@ module.exports = (function () {
             options: {
                 onLoadEvent: 'channels:loaded'
             },
-
         },
         router: {
             constructor: ChannelsRouter,

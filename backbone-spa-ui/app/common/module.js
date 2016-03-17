@@ -68,7 +68,7 @@ module.exports = (function () {
             count++;
         });
 
-        if (!this.modules || this.modules.length == 0) {                // if not submodules
+        if (!this.modules || this.modules.length == 0) {                // if there are no submodules
             //console.log(this.name, ': No modules param or empty');
             console.log('   Trigger ', this.name,':submodules:loaded');
             Backbone.Events.trigger(this.name + ':submodules:loaded');
