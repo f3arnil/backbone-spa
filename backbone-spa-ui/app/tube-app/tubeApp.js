@@ -23,21 +23,21 @@ module.exports = (function () {
                 options: {}
             },
             modules: [
-                // {
-                //     module: HeaderModule,
-                //     weight: 1
-                // },
-                // {
-                //     module: SideBarModule,
-                //     weight: 3
-                // },
-                // {
-                //     module: SearchModule,
-                //     weight: 2
-                // },
+                {
+                    module: HeaderModule,
+                    weight: 1
+                },
+                {
+                    module: SideBarModule,
+                    weight: 3
+                },
+                {
+                    module: SearchModule,
+                    weight: 2
+                },
                 {
                     module: ContentModule,
-                    weight: 3
+                    weight: 4
                 }
             ],
         });

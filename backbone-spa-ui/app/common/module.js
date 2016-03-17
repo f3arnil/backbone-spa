@@ -2,8 +2,6 @@
 
 module.exports = (function () {
 
-    var count = 0;
-
     var Module = function (params) {
         if (params) {
             this.view = {}
@@ -62,29 +60,36 @@ module.exports = (function () {
     }
 
     Module.prototype.subModulesConstruct = function () {
-        if (!this.modules || this.modules.length == 0) {
-            //console.log(this.name, ': No modules param or empty');
-            Backbone.Events.trigger(this.name + ':submodules:loaded');
-            console.log(this.name + ' not submodules');
-            console.log(this.modules);
-            return;
-        };
 
-        this.modules.sort(this.compareWeight);
+        var count = 0;
 
         _.each(this.modules, function (object, index) {
             if (_.has(object, 'switchable') || object.switchable) return;
             count++;
         });
 
+        if (!this.modules || this.modules.length == 0) {                // if not submodules
+            //console.log(this.name, ': No modules param or empty');
+            console.log('   Trigger ', this.name,':submodules:loaded');
+            Backbone.Events.trigger(this.name + ':submodules:loaded');
+            return;
+        };
+
+        this.modules.sort(this.compareWeight);
+
         console.log(this.name + ' submodules -> ' + count);
 
         _.each(this.modules, function (object, index) {
             if (_.has(object, 'switchable') || object.switchable) return;
 
-//            { parentName:this.name }
             var module = new object.module();                           // create module
             this[module.name] = module;                                 // add parameters
+
+            count--;
+            if (count == 0) {
+                console.log('   Trigger ', this.name,':submodules:loaded');
+                Backbone.Events.trigger(this.name + ':submodules:loaded');
+            }
 
         }, this);
 
@@ -102,10 +107,10 @@ module.exports = (function () {
                     //console.log('Catched', object.event);
 
                     if (_.has(this.currentModule, 'view')) {
-                        //                        console.log('Remove existing current.', this.currentModule);
-                        //                        this.currentModule.view.off();
-                        //                        this.currentModule.view.remove();
-                        //                        this.currentModule = {};
+                        // console.log('Remove existing current.', this.currentModule);
+                        // this.currentModule.view.off();
+                        // this.currentModule.view.remove();
+                        // this.currentModule = {};
                     }
 
                     var module = new object.module();

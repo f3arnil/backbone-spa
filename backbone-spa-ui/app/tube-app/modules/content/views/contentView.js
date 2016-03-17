@@ -2,16 +2,13 @@ module.exports = (function () {
     'use strict';
 
     var contentTpl = require('tpl!../templates/content');
-    //    var VideoListModule = require('../../videoList/');
 
     var ContentView = Backbone.View.extend({
         el: '#main-article',
         template: contentTpl,
         initialize: function (options) {
             _.extend(this,options);
-            //Backbone.Events.trigger(this.name + ':init');
             this.render();
-
 //            this.listenTo(Backbone.Events, 'page:home', this.getContentHomePage);
 //            this.listenTo(Backbone.Events, 'page:my-channel', this.getContentOtherPage);
 //            this.listenTo(Backbone.Events, 'page:trending', this.getContentOtherPage);
@@ -28,6 +25,8 @@ module.exports = (function () {
         render: function () {
             this.$el.html(this.template);
             Backbone.Events.trigger(this.onLoadEvent);              // event -> content:loaded
+            Backbone.Events.trigger('show:listVideo');
+            return this;
         }
     });
 

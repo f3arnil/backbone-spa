@@ -14,14 +14,14 @@ module.exports = (function () {
         },
         modules: [
             {
-                // switchable: true,
-                // event: 'show:listVideo',
+                switchable: true,
+                event: 'show:listVideo',
                 module: VideoListModule,
                 weight: 8
             },
             {
-                // switchable: true,
-                // event: 'show:details',
+                switchable: true,
+                event: 'show:details',
                 module: DetailsModule,
                 weight: 9
             }

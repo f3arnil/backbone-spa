@@ -11,8 +11,8 @@ module.exports = (function () {
         template: VideosListTemplate,
         itemTemplate: VideoListTemplate,
         initialize: function (options) {
-            _.extend(this,options);
-            // console.log('Init VideosListView');
+             _.extend(this,options);
+            //console.log('Init VideosListView');
             this.collection = new VideoListCollection();
             this.listenTo(Backbone.Events, 'Channel:videos', this.listVideosLoad);
             this.listenTo(this.collection, 'sync', this.onCollectionSync);
@@ -43,8 +43,8 @@ module.exports = (function () {
         },
         render: function () {
             this.$el.html(this.template());
-            Backbone.Events.trigger(this.onLoadEvent);
             this.trigger('render:complite');
+            Backbone.Events.trigger(this.onLoadEvent);
             return this;
         }
     });

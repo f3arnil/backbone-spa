@@ -6,7 +6,7 @@ module.exports = (function() {
 
     var DetailsModule = Module.extend({
         name: 'details',
-        view: {
+        layoutView: {
             constructor: DetailsView,
             options: { onLoadEvent: 'details:loaded' }
         }
