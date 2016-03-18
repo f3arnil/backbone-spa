@@ -23,6 +23,7 @@ module.exports = (function () {
 
     
     Module.prototype.init = function () {
+        console.log(this.name, ' LOADING START...');
         var loaded = this.name + ':loaded';
         _.extend(this, Backbone.Events);
         Backbone.Events.on(loaded, this.onLoyoutViewLoad, this);
@@ -48,48 +49,56 @@ module.exports = (function () {
     };
 
     // Callback function loaded View
-    Module.prototype.onLoyoutViewLoad = function() {
+    Module.prototype.onLoyoutViewLoad = function () {
         //console.log(this.name, ' is loaded');
         Backbone.Events.on(this.name + ':submodules:loaded', this.onSubModulesLoad, this);
+        Backbone.Events.on(this.name + ':modules:loaded', this.onModulesLoad, this);
         this.subModulesConstruct();
         this.switcher();
     }
     
-    Module.prototype.onSubModulesLoad = function() {
-        console.log(this.name + ' -> Submodules loaded!');
+    Module.prototype.onSubModulesLoad = function () {
+        //console.log(this.name + ' -> Submodules loaded!');
+        this.submodulesCount--;      
+        if (this.submodulesCount <= 0) {
+            Backbone.Events.trigger(this.name + ':modules:loaded');
+        }
+    }
+    
+    Module.prototype.onModulesLoad = function () {
+        console.log(this.name, ' LOADING END...');
     }
 
     Module.prototype.subModulesConstruct = function () {
 
-        var count = 0;
-
+        this.submodulesCount = 0;
+        
         _.each(this.modules, function (object, index) {
             if (_.has(object, 'switchable') || object.switchable) return;
-            count++;
-        });
+            this.submodulesCount++;
+        }, this);
 
+        console.log(this.name + ' submodules -> ' + this.submodulesCount);
+        
         if (!this.modules || this.modules.length == 0) {                // if there are no submodules
-            //console.log(this.name, ': No modules param or empty');
-            console.log('   Trigger ', this.name,':submodules:loaded');
+            if ( this.parentModule == 'undefined' ) { Backbone.Events.trigger('Start:app'); return; }
+            
             Backbone.Events.trigger(this.name + ':submodules:loaded');
+            Backbone.Events.trigger(this.parentModule + ':modules:loaded');
+            
+            console.log('PARENT >>> ', this.parentModule);
+            
             return;
         };
 
         this.modules.sort(this.compareWeight);
-
-        console.log(this.name + ' submodules -> ' + count);
 
         _.each(this.modules, function (object, index) {
             if (_.has(object, 'switchable') || object.switchable) return;
 
             var module = new object.module();                           // create module
             this[module.name] = module;                                 // add parameters
-
-            count--;
-            if (count == 0) {
-                console.log('   Trigger ', this.name,':submodules:loaded');
-                Backbone.Events.trigger(this.name + ':submodules:loaded');
-            }
+            this[module.name].parentModule = this.name;
 
         }, this);
 

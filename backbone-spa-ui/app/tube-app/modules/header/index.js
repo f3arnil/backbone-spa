@@ -9,7 +9,7 @@ module.exports = (function () {
         name: 'header',
         layoutView: {
             constructor: HeaderView,
-            options: {}
+            options: { onLoadEvent: 'header:loaded' }
         }
     })
 

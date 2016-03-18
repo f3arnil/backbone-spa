@@ -1,7 +1,7 @@
 module.exports = (function () {
     'use strict';
 
-    var Module = require('../../../common/module');
+    var Module = require('../../../../common/module');
     var MainMenuRouter = require('./router/router');
     var MainMenuView = require('./views/mainMenuView');
 

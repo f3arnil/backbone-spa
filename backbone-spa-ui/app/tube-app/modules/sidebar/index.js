@@ -3,7 +3,7 @@ module.exports = (function () {
 
     var SideBarView = require('./views/sideBarView');
     var Module = require('../../../common/module');
-    var MainMenuModule = require('../mainMenu/');
+    var MainMenuModule = require('./mainMenu-module/');
     var ChannelsModule = require('./channels-module/');
 
     var SideBarModule = Module.extend({

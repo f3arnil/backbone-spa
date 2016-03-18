@@ -12,39 +12,47 @@ module.exports = (function () {
 
     function init() {
 
+        var startApp = function () {
+            Backbone.history.start();
+            console.log('history start');
+        };
+        
+        Backbone.Events.on('Start:app', startApp);
+
         var app = new Module({
-            name:'app',
+            name: 'app',
             layoutView: {
                 constructor: TubeAppView,
-                options: { onLoadEvent: 'app:loaded' }
+                options: {
+                    onLoadEvent: 'app:loaded'
+                }
             },
             router: {
                 constructor: AppRouter,
                 options: {}
             },
             modules: [
-                {
-                    module: HeaderModule,
-                    weight: 1
-                },
+//                {
+//                    module: HeaderModule,
+//                    weight: 1
+//                },
                 {
                     module: SideBarModule,
                     weight: 3
                 },
-                {
-                    module: SearchModule,
-                    weight: 2
-                },
-                {
-                    module: ContentModule,
-                    weight: 4
-                }
+//                {
+//                    module: SearchModule,
+//                    weight: 2
+//                },
+//                {
+//                    module: ContentModule,
+//                    weight: 4
+//                }
             ],
         });
 
         //console.log(app);
         //setTimeout(function(){Backbone.history.start();}, 2000);
-        Backbone.history.start();
         // Backbone.history.start({pushState: true, root: '/'});
     };
 

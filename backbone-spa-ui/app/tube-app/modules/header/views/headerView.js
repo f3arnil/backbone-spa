@@ -6,11 +6,13 @@ module.exports = (function () {
     var HeaderView = Backbone.View.extend({
         el: '#header-holder',
         template: headerViewTpl,
-        initialize: function () {
+        initialize: function (options) {
+            _.extend(this,options);
             this.render();
         },
         render: function () {
             this.$el.html(this.template);
+            Backbone.Events.trigger(this.onLoadEvent);
             return this;
         }
     });

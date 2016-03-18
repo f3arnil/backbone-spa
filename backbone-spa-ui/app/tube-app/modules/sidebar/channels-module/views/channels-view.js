@@ -13,6 +13,7 @@ module.exports = (function () {
         itemTemplate: ChannelTemplate,
         initialize: function (options) {
             //console.log('Init ChannelsView');
+            _.extend(this,options);
             this.collection = new ChannelsCollection();
             this.listenTo(this.collection, 'sync', this.onCollectionSync);
             this.listenTo(this.collection, 'error', this.onCollectionError);
@@ -37,10 +38,12 @@ module.exports = (function () {
             this.collection.each(function (item) {
                 this.$el.find('ul').append(this.itemTemplate(item.toJSON()));
             }, this);
+            Backbone.Events.trigger(this.onLoadEvent);
         },
         render: function () {
             this.$el.html(this.template());
             this.trigger('render:complite');
+            return this;
         }
     });
 

@@ -4,7 +4,7 @@ module.exports = (function () {
     
     var SideBarTpl = require('tpl!../template/sidebar-template');
     var ChannelsModule = require('../channels-module');
-    var MainMenuModule = require('../../mainMenu');
+    var MainMenuModule = require('../mainMenu-module');
 
     var SideBarView = Backbone.View.extend({
         el: '#left-panel',
@@ -14,7 +14,8 @@ module.exports = (function () {
             this.render();
         },
         render: function () {
-            this.$el.html(this.template);
+            this.$el.html(this.template());
+            console.log('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< VIEW LOAD <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<');
             Backbone.Events.trigger(this.onLoadEvent);
             return this;
         }
