@@ -3,7 +3,7 @@ module.exports = (function () {
 
     var mainMenuTpl = require('tpl!../templates/main-menu');
 
-    var SideBarView = Backbone.View.extend({
+    var MainMenuView = Backbone.View.extend({
         el: '#left-panel',
         template: mainMenuTpl,
         events: {
@@ -19,12 +19,12 @@ module.exports = (function () {
             Backbone.history.navigate(fragment, true);
         },
         render: function () {
-            this.$el.prepend(this.template);
+            this.$el.prepend(this.template());
             Backbone.Events.trigger(this.onLoadEvent);
             return this;
         }
     });
 
-    return SideBarView;
+    return MainMenuView;
 
 })();

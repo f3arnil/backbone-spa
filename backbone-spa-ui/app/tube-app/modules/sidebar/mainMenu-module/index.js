@@ -1,9 +1,9 @@
 module.exports = (function () {
     'use strict';
 
-    var Module = require('../../../../common/module');
-    var MainMenuRouter = require('./router/router');
     var MainMenuView = require('./views/mainMenuView');
+    var MainMenuRouter = require('./router/router');
+    var Module = require('../../../../common/module');
 
     var MainMenuModule = Module.extend({
         name: 'mainMenu',
@@ -17,7 +17,7 @@ module.exports = (function () {
             constructor: MainMenuRouter,
             options: {}
         }
-    })
+    });
 
     return MainMenuModule;
 
