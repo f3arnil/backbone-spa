@@ -2,8 +2,8 @@
 
 module.exports = (function () {
 
-    var ChannelsView = require('./views/channels-view');
-    var ChannelsRouter = require('./router/channels-router');
+    var ChannelsView = require('./views/channelsView');
+    var ChannelsRouter = require('./router/channelsRouter');
     var Module = require('../../../../common/module');
 
     var ChannelsModule = Module.extend({

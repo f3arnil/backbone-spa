@@ -2,6 +2,7 @@ module.exports = (function () {
     'use strict'
 
     var SideBarView = require('./views/sideBarView');
+    var SideBarRouter = require('./router/sideBarRouter');
     var Module = require('../../../common/module');
     var MainMenuModule = require('./mainMenu-module/');
     var ChannelsModule = require('./channels-module/');
@@ -13,6 +14,10 @@ module.exports = (function () {
             options: {
                 onLoadEvent: 'sidebar:loaded'
             }
+        },
+        router: {
+            constructor: SideBarRouter,
+            options: {}
         },
         modules: [
             {
