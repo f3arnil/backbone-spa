@@ -32,28 +32,29 @@ module.exports = (function () {
                 options: {}
             },
             modules: [
-//                {
-//                    module: HeaderModule,
-//                    weight: 1
-//                },
+               {
+                   module: HeaderModule,
+                   weight: 1
+               },
                 {
                     module: SideBarModule,
                     weight: 3
                 },
-//                {
-//                    module: SearchModule,
-//                    weight: 2
-//                },
-//                {
-//                    module: ContentModule,
-//                    weight: 4
-//                }
+               {
+                   module: SearchModule,
+                   weight: 2
+               },
+               {
+                   module: ContentModule,
+                   weight: 4
+               }
             ],
         });
 
         //console.log(app);
         //setTimeout(function(){Backbone.history.start();}, 2000);
         // Backbone.history.start({pushState: true, root: '/'});
+        Backbone.history.start();
     };
 
     return init();

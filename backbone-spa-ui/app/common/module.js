@@ -49,28 +49,27 @@ module.exports = (function () {
 
     // Callback function loaded View
     Module.prototype.onLoyoutViewLoad = function () {
-        //console.log(this.name, ' is loaded');
         Backbone.Events.on(this.name + ':submodules:loaded', this.onSubModulesLoad, this);
-        Backbone.Events.on(this.name + ':modules:loaded', this.onModulesLoad, this);
+        Backbone.Events.on(this.name + ':module:loaded', this.onModulesLoad, this);
         this.subModulesConstruct();
         this.switcher();
     }
 
     Module.prototype.onSubModulesLoad = function () {
         this.submodulesCount--;
-        if (this.submodulesCount < 0) {
-            //Backbone.Events.trigger(this.parentModule + ':modules:loaded');
-            Backbone.Events.trigger(this.name + ':modules:loaded');
+        //Backbone.Events.trigger(this.name + ':module:loaded');
+        if (this.submodulesCount <= 0 && this.parentModule) {
+            Backbone.Events.trigger(this.name + ':module:loaded');
         }
     }
 
     Module.prototype.onModulesLoad = function () {
-//        if (!this.parentModule) {
-//            Backbone.Events.trigger('Start:app');
-//            return;
-//        }
-        console.log(this.parentModule, ' LOADING END...');
-        Backbone.Events.trigger(this.parentModule + ':modules:loaded');
+       if (!this.parentModule) {
+           Backbone.Events.trigger('Start:app');
+           console.log(' START APPLICATION...');
+           return;
+       }
+        console.log(this.name, ' LOADING END...');
     }
 
     Module.prototype.subModulesConstruct = function () {
@@ -86,6 +85,7 @@ module.exports = (function () {
 
         if (!this.modules || this.modules.length == 0) { // if there are no submodules
             Backbone.Events.trigger(this.name + ':submodules:loaded');
+            //Backbone.Events.trigger(this.parentModule + ':submodules:loaded');
             return;
         };
 

@@ -25,7 +25,7 @@ module.exports = (function () {
         render: function () {
             this.$el.html(this.template);
             Backbone.Events.trigger(this.onLoadEvent);              // event -> content:loaded
-            //Backbone.Events.trigger('show:listVideo');
+            Backbone.Events.trigger('show:listVideo');
             return this;
         }
     });
