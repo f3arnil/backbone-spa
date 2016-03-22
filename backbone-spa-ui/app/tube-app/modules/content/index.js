@@ -19,8 +19,8 @@ module.exports = (function () {
         },
         modules: [
             {
-//                switchable: true,
-//                event: 'show:listVideo',
+                switchable: true,
+                event: 'show:listVideo',
                 module: VideoListModule,
                 weight: 8
             },

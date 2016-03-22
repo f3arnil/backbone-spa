@@ -5,9 +5,7 @@ module.exports = (function () {
         routes: {
             '': 'index',
             //            '*actions': 'defaultAction'
-            'channel/:id': 'showChannel',
-            'channel/:id/:action': 'channelAction',
-            //':page/:id': 'showPage'
+            ':page/:id': 'showPage'
         },
         initialize: function () {
             console.log('Initialize in AppRouter');
@@ -21,13 +19,6 @@ module.exports = (function () {
             //this.navigate('#');
             //Backbone.Events.trigger('get:post');
             console.log('DefaultAction in AppRouter');
-        },
-        showChannel: function (id) {
-            console.log('showChannel', id);
-        },
-        channelAction: function (id, action) {
-            var event = 'Channel:' + action;
-            Backbone.Events.trigger(event, id, action);
         },
         showPage: function (page, id) {
             Backbone.Events.trigger(page + ':' + id);

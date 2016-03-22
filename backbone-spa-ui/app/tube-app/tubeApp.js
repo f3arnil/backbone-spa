@@ -38,7 +38,7 @@ module.exports = (function () {
                },
                 {
                     module: SideBarModule,
-                    weight: 3
+                    weight: 4
                 },
                {
                    module: SearchModule,
@@ -46,7 +46,7 @@ module.exports = (function () {
                },
                {
                    module: ContentModule,
-                   weight: 4
+                   weight: 3
                }
             ],
         });
