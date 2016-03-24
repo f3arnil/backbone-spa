@@ -57,7 +57,6 @@ module.exports = (function () {
 
     Module.prototype.onSubModulesLoad = function () {
         this.submodulesCount--;
-        //Backbone.Events.trigger(this.name + ':module:loaded');
         if (this.submodulesCount <= 0 && this.parentModule) {
             Backbone.Events.trigger(this.name + ':module:loaded');
         }
@@ -85,7 +84,6 @@ module.exports = (function () {
 
         if (!this.modules || this.modules.length == 0) { // if there are no submodules
             Backbone.Events.trigger(this.name + ':submodules:loaded');
-            //Backbone.Events.trigger(this.parentModule + ':submodules:loaded');
             return;
         };
 
@@ -106,19 +104,21 @@ module.exports = (function () {
     Module.prototype.switcher = function () {
         _.each(this.modules, function (object, index) {
             if (_.has(object, 'switchable') && object.switchable) {
-                //console.log('Set listener to ', object.event);
-                this.listenTo(Backbone.Events, object.event, function () {
-                    //console.log('Catched', object.event);
+                console.log('Set listener to ', object.event);
+                this.on(object.event, function () {
+                    console.log('Catched', object.event);
 
-                    if (_.has(this.currentModule, 'view')) {
-                        // console.log('Remove existing current.', this.currentModule);
-                        // this.currentModule.view.off();
-                        // this.currentModule.view.remove();
-                        // this.currentModule = {};
+                    if (_.has(this.currentModule, 'layoutView')) {
+                         console.log('Remove existing current.', this.currentModule);
+                         //this.currentModule.view.off();
+                         //this.currentModule.view.remove();
+                         this.currentModule = {};
+                        //console.log('this.currentModule > ', this.currentModule);
                     }
 
                     var module = new object.module();
                     this['currentModule'] = module;
+                    //console.log('this.currentModule > ', this.currentModule);
 
                 }, this)
             }

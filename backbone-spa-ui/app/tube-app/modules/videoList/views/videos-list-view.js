@@ -14,7 +14,7 @@ module.exports = (function () {
              _.extend(this,options);
             //console.log('Init VideosListView');
             this.collection = new VideoListCollection();
-            this.listenTo(Backbone.Events, 'Channel:videos', this.listVideosLoad);
+            this.listenTo(Backbone.Events, 'show:listVideo', this.listVideosLoad);
             this.listenTo(this.collection, 'sync', this.onCollectionSync);
             this.listenTo(this.collection, 'error', this.onCollectionError);
             this.on('render:complite', this.onRenderComplite, this);

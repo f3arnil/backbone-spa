@@ -16,7 +16,7 @@ module.exports = (function () {
             Backbone.history.start();
             console.log('history start');
         };
-        
+
         Backbone.Events.on('Start:app', startApp);
 
         var app = new Module({
@@ -32,21 +32,21 @@ module.exports = (function () {
                 options: {}
             },
             modules: [
-               {
-                   module: HeaderModule,
-                   weight: 1
+                {
+                    module: HeaderModule,
+                    weight: 1
                },
                 {
                     module: SideBarModule,
                     weight: 4
                 },
-               {
-                   module: SearchModule,
-                   weight: 2
+                {
+                    module: SearchModule,
+                    weight: 2
                },
-               {
-                   module: ContentModule,
-                   weight: 3
+                {
+                    module: ContentModule,
+                    weight: 3
                }
             ],
         });
@@ -56,6 +56,7 @@ module.exports = (function () {
         // Backbone.history.start({pushState: true, root: '/'});
         Backbone.history.start();
     };
+
 
     return init();
 
