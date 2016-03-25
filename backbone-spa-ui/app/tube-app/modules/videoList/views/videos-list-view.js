@@ -14,7 +14,7 @@ module.exports = (function () {
              _.extend(this,options);
             //console.log('Init VideosListView');
             this.collection = new VideoListCollection();
-            this.listenTo(Backbone.Events, 'show:listVideo', this.listVideosLoad);
+            this.listenTo(Backbone.Events, 'Channel:video', this.listVideosLoad);
             this.listenTo(this.collection, 'sync', this.onCollectionSync);
             this.listenTo(this.collection, 'error', this.onCollectionError);
             this.on('render:complite', this.onRenderComplite, this);
@@ -37,7 +37,7 @@ module.exports = (function () {
         },
         clickVideo: function (event) {
             event.preventDefault();
-            Backbone.Events.trigger('show:details');
+            //Backbone.Events.trigger('show:details');
             Backbone.history.navigate(event.target.hash, {trigger: true});
         },
         onCollectionSync: function () {

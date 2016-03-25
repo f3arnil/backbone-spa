@@ -15,15 +15,6 @@ module.exports = (function () {
             //            this.listenTo(Backbone.Events, 'page:subscriptions', this.getContentOtherPage);
             //            this.listenTo(Backbone.Events, 'page:history', this.getContentOtherPage);
             //            this.listenTo(Backbone.Events, 'page:watch-later', this.getContentOtherPage);
-            this.listenTo(Backbone.Events, 'load:listVideo', function () {
-                console.log('Show list video');
-                Backbone.Events.trigger('show:listVideo')
-            });
-            this.listenTo(Backbone.Events, 'load:details', function () {
-                console.log('Show details');
-                Backbone.Events.trigger('show:details')
-            })
-
         },
         getContentOtherPage: function () {
             this.$el.html('Empty content!');
@@ -33,8 +24,6 @@ module.exports = (function () {
         },
         render: function () {
             this.$el.html(this.template);
-            Backbone.Events.trigger(this.onLoadEvent); // event -> content:loaded
-            //Backbone.Events.trigger('show:listVideo');
             return this;
         }
     });

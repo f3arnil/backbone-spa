@@ -11,7 +11,7 @@ module.exports = (function () {
         layoutView: {
             constructor: ChannelsView,
             options: {
-                onLoadEvent: 'channels:loaded'
+//                onLoadEvent: 'channels:loaded'
             },
         },
         router: {

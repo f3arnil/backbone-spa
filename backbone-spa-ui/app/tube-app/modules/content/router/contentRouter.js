@@ -7,12 +7,13 @@ module.exports = (function () {
             'channel/:id/videos': 'showListVideo',
         },
         showVideo: function (id, idVideo) {
-            console.log('       Details start !..', id, idVideo);
-            Backbone.Events.trigger('show:details');
+//            console.log('       Details start !..', id, idVideo);
+//            Backbone.Events.trigger('show:details');
+            Backbone.Events.trigger('details:load');
         },
         showListVideo: function (id) {
-            console.log('       List Video start !..', id);
-            Backbone.Events.trigger('show:listVideo', id);
+            Backbone.Events.trigger('videoList:load');
+            Backbone.Events.trigger('Channel:video', id);
         }
     });
 

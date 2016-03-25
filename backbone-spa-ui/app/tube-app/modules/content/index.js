@@ -1,7 +1,7 @@
 module.exports = (function () {
     'use strict';
 
-//    var ContentView = require('./views/contentView');
+    var ContentView = require('./views/contentView');
     var ContentRouter = require('./router/contentRouter');
     var Module = require('../../../common/module');
     var VideoListModule = require('../videoList/');
@@ -9,10 +9,10 @@ module.exports = (function () {
 
     var ContentModule = Module.extend({
         name: 'content',
-//        layoutView: {
-//            constructor: ContentView,
-//            options: { onLoadEvent: 'content:loaded' }
-//        },
+        layoutView: {
+            constructor: ContentView,
+            options: {}
+        },
         router: {
             constructor: ContentRouter,
             options: {}
@@ -26,7 +26,8 @@ module.exports = (function () {
                 module: DetailsModule,
                 weight: 9
             }
-        ]
+        ],
+        switchable: false
     })
 
     

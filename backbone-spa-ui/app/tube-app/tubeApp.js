@@ -2,7 +2,10 @@ module.exports = (function () {
     'use strict';
 
     var AppRouter = require('./router');
+    var TubeAppView = require('./views/baseTubeAppView');
     var HeaderModule = require('./modules/header/');
+    var SearchModule = require('./modules/search/');
+    var SidebarModule = require('./modules/sidebar/');
     var ContentModule = require('./modules/content/');
     var Module = require('../common/module');
 
@@ -11,12 +14,21 @@ module.exports = (function () {
         var startApp = function () {
             Backbone.history.start();
             console.log('history start');
+//            setTimeout(function () {
+//                Backbone.Events.trigger('videoList:load');
+//            }, 3000);
         };
 
         Backbone.Events.on('start:app', startApp);
 
         var app = new Module({
             name: 'app',
+            layoutView: {
+                constructor: TubeAppView,
+                options: {
+                    //                    onLoadEvent: 'app:loaded'
+                }
+            },
             router: {
                 constructor: AppRouter,
                 options: {}
@@ -27,14 +39,21 @@ module.exports = (function () {
                     weight: 1
                 },
                 {
-                    module: ContentModule,
+                    module: SearchModule,
+                    weight: 2
+                },
+                {
+                    module: SidebarModule,
                     weight: 3
+                },
+                {
+                    module: ContentModule,
+                    weight: 4
                 }
             ]
         });
 
     };
-
 
     return init();
 
