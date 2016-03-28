@@ -14,9 +14,11 @@ module.exports = (function () {
     Module.prototype.init = function () {
         var load = this.name + ':load';
         var destroy = this.name + ':destroy';
+        var currentView = this.name + ':changeView'
 
         Backbone.Events.once(load, this.setViewLoad, this);
-        Backbone.Events.once(destroy, this.destroyView, this);
+        Backbone.Events.on(destroy, this.destroyView, this);
+        Backbone.Events.on(currentView, this.changeCurrentView, this);
 
         _.extend(this, Backbone.Events);
         this.setDefault();
@@ -99,7 +101,9 @@ module.exports = (function () {
 
     Module.prototype.setViewLoad = function () {
         console.log('start:view:' + this.name);
-
+        
+        Backbone.Events.trigger(this.parentModule + ':changeView', this.name);
+        
         var elem = this['layoutView'];
         var Element = elem.constructor;
         var options = elem.options || {};
@@ -107,10 +111,22 @@ module.exports = (function () {
 
     };
 
-    Module.prototype.destroyView = function () {
-        var load = this.name + ':load';
+    Module.prototype.destroyView = function (event) {
+        var load = event + ':load';
+
+        $(this.layoutView.el).html('');
+        delete this.layoutView;
+
         Backbone.Events.once(load, this.setViewLoad, this);
+        console.log('Create ONCE -> ', load);
     };
+
+    Module.prototype.changeCurrentView = function (name) {
+        if (this.currentView) {
+            Backbone.Events.trigger(this.currentView + ':destroy', this.currentView);
+        }
+        this.currentView = name;
+    }
 
     Module.prototype.compareWeight = function (moduleA, moduleB) {
         return moduleA.weight - moduleB.weight;

@@ -14,9 +14,17 @@ module.exports = (function () {
         var startApp = function () {
             Backbone.history.start();
             console.log('history start');
-//            setTimeout(function () {
-//                Backbone.Events.trigger('videoList:load');
-//            }, 3000);
+            //            setTimeout(function () {
+            //                Backbone.Events.trigger('videoList:load');
+            //            }, 2000);
+            //            setTimeout(function () {
+            //                Backbone.Events.trigger('videoList:destroy');
+            //                Backbone.Events.trigger('details:load');
+            //            }, 5000);
+
+            //            setTimeout(function () {
+            //                Backbone.Events.trigger('videoList:load');
+            //            }, 10000);
         };
 
         Backbone.Events.on('start:app', startApp);
@@ -52,6 +60,20 @@ module.exports = (function () {
                 }
             ]
         });
+
+        //        setTimeout(function () {
+        //            console.log(app);
+        //        }, 1000);
+        //
+        //        setTimeout(function () {
+        //            console.log(app);
+        //        }, 3000);
+        //        setTimeout(function () {
+        //            console.log(app);
+        //        }, 7000);
+//        Backbone.Events.on('all', function () {
+//            console.log(app);
+//        }, this);
 
     };
 

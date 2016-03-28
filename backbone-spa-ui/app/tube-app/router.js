@@ -10,7 +10,7 @@ module.exports = (function () {
         },
         index: function () {
             //console.log('Index in AppRouter');
-            Backbone.Events.trigger('videoList:load');
+            //Backbone.Events.trigger('videoList:load');
         }
     });
 
