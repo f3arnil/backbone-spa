@@ -6,11 +6,13 @@ module.exports = (function () {
     var SearchView = Backbone.View.extend({
         el: '#search-holder',
         template: searchViewTpl,
-        initialize: function () {
+        initialize: function (options) {
+            _.extend(this,options);
             this.render();
         },
         render: function () {
             this.$el.html(this.template);
+            Backbone.Events.trigger(this.onLoadEvent);
             return this;
         }
     });

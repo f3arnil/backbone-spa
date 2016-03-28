@@ -1,11 +1,11 @@
 module.exports = (function () {
     'use strict';
 
-    var headerViewTpl = require('tpl!../templates/header');
+    var detailsViewTpl = require('tpl!../templates/details');
 
-    var HeaderView = Backbone.View.extend({
-        el: '#header-holder',
-        template: headerViewTpl,
+    var DetailsView = Backbone.View.extend({
+        el: '#article',
+        template: detailsViewTpl,
         initialize: function (options) {
             _.extend(this,options);
             this.render();
@@ -17,6 +17,6 @@ module.exports = (function () {
         }
     });
 
-    return HeaderView;
+    return DetailsView;
 
 })();

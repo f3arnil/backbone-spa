@@ -1,21 +1,53 @@
 module.exports = (function () {
     'use strict';
 
-    var TubeAppView = require('./views/baseTubeAppView');
-    var NameSpaceModulesApp = require('./nameSpaceModulesApp');
     var AppRouter = require('./router');
+    var TubeAppView = require('./views/baseTubeAppView');
+    var HeaderModule = require('./modules/header/');
+    var SearchModule = require('./modules/search/');
+    var SidebarModule = require('./modules/sidebar/');
+    var ContentModule = require('./modules/content/');
+    var Module = require('../common/module');
 
     function init() {
-        var appRouter = new AppRouter();
-        var nameSpaceModulesApp = new NameSpaceModulesApp();
 
-        var tubeAppView = new TubeAppView({
-            router: appRouter,
-            modules: nameSpaceModulesApp
+        var startApp = function () {
+            Backbone.history.start();
+            console.log('history start');
+        };
+
+        Backbone.Events.on('start:app', startApp);
+
+        var app = new Module({
+            name: 'app',
+            layoutView: {
+                constructor: TubeAppView,
+                options: {}
+            },
+            router: {
+                constructor: AppRouter,
+                options: {}
+            },
+            modules: [
+                {
+                    module: HeaderModule,
+                    weight: 1
+                },
+                {
+                    module: SearchModule,
+                    weight: 2
+                },
+                {
+                    module: SidebarModule,
+                    weight: 3
+                },
+                {
+                    module: ContentModule,
+                    weight: 4
+                }
+            ]
         });
 
-        Backbone.history.start();
-        // Backbone.history.start({pushState: true, root: '/'});
     };
 
     return init();

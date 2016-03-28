@@ -1,18 +1,16 @@
-module.exports = (function() {
+module.exports = (function () {
     'use strict';
 
     var SearchView = require('./views/searchView');
+    var Module = require('../../../common/module');
 
-    var SearchModule = function () {
-
-        var searchView = function () {
-            return new SearchView();
+    var SearchModule = Module.extend({
+        name: 'search',
+        layoutView: {
+            constructor: SearchView,
+            options: { onLoadEvent: 'search:loaded' }
         }
-
-        return {
-            view: searchView()
-        };
-    };
+    })
 
     return SearchModule;
 
