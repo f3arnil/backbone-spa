@@ -6,11 +6,11 @@ module.exports = (function () {
             '': 'index',
         },
         initialize: function () {
-            //console.log('Initialize in AppRouter');
+            console.log('Initialize in AppRouter');
         },
         index: function () {
-            //console.log('Index in AppRouter');
-            //Backbone.Events.trigger('videoList:load');
+            console.log('Index in AppRouter');
+            Backbone.Events.trigger('videoList:load');
         }
     });
 

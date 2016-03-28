@@ -10,9 +10,7 @@ module.exports = (function () {
         name: 'channels',
         layoutView: {
             constructor: ChannelsView,
-            options: {
-//                onLoadEvent: 'channels:loaded'
-            },
+            options: {},
         },
         router: {
             constructor: ChannelsRouter,

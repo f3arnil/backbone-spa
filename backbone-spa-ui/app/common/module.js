@@ -118,7 +118,6 @@ module.exports = (function () {
         delete this.layoutView;
 
         Backbone.Events.once(load, this.setViewLoad, this);
-        console.log('Create ONCE -> ', load);
     };
 
     Module.prototype.changeCurrentView = function (name) {
