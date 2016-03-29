@@ -1,22 +1,21 @@
 module.exports = (function () {
     'use strict';
 
-    var detailsViewTpl = require('tpl!../templates/details');
+    var commentsViewTpl = require('tpl!../templates/comments');
 
-    var DetailsView = Backbone.View.extend({
-        el: '#article',
-        template: detailsViewTpl,
+    var CommentsView = Backbone.View.extend({
+        el: '#comments',
+        template: commentsViewTpl,
         initialize: function (options) {
             _.extend(this,options);
             this.render();
         },
         render: function () {
             this.$el.html(this.template);
-            Backbone.Events.trigger('comments:load');
             return this;
         }
     });
 
-    return DetailsView;
+    return CommentsView;
 
 })();

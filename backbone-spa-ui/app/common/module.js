@@ -100,10 +100,10 @@ module.exports = (function () {
     };
 
     Module.prototype.setViewLoad = function () {
-        console.log('start:view:' + this.name);
-        
+        //console.log('start:view:' + this.name);
+
         Backbone.Events.trigger(this.parentModule + ':changeView', this.name);
-        
+
         var elem = this['layoutView'];
         var Element = elem.constructor;
         var options = elem.options || {};
@@ -113,11 +113,16 @@ module.exports = (function () {
 
     Module.prototype.destroyView = function (event) {
         var load = event + ':load';
-
         $(this.layoutView.el).html('');
         delete this.layoutView;
 
         Backbone.Events.once(load, this.setViewLoad, this);
+
+        if (!this.modules) { return; }
+        
+        _.each(this.modules, function (elem) {
+             Backbone.Events.trigger(elem.module.prototype.name + ':destroy', this.currentView);
+        }, this);
     };
 
     Module.prototype.changeCurrentView = function (name) {

@@ -62,6 +62,11 @@ textarea {
 .content {
     margin-top: 50px;
 }
+
+.sidebar {
+    background: #fff;
+}
+
 .sidebar-menu {
     background: none;
     padding: 10px;

@@ -48,6 +48,10 @@ module.exports = (function () {
             ]
         });
 
+//        Backbone.Events.on('all', function () {
+//            console.log(app);
+//        }, this);
+
     };
 
     return init();
