@@ -2,7 +2,7 @@
 
 module.exports = (function () {
 
-    var Module = require('../../../../common/module');
+    var Module = require('appCommon/');
     var CommentsView = require('./views/commentsView');
 
     var CommentsModule = Module.extend({

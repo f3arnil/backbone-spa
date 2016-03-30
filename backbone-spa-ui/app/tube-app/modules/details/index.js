@@ -1,7 +1,7 @@
 module.exports = (function () {
     'use strict';
 
-    var Module = require('../../../common/module');
+    var Module = require('appCommon/');
     var DetailsView = require('./views/detailsView');
     var CommentsModule = require('./comments-module/');
 

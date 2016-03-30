@@ -1,6 +1,5 @@
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-//var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
 var path = require('path');
 
 // var ENV_DEV = process.env.NODE_ENV === 'Development';
@@ -59,7 +58,10 @@ module.exports = {
         })
     ],
     resolve: {
-        root: path.resolve(__dirname, './build'),
+		alias: {
+			appCommon: path.join(__dirname, 'app/common'),
+            appModules: path.join(__dirname, 'app/tube-app/modules')
+		},
         extensions: ['', '.js', '.tpl', '.less', '.sass']
     },
     watch: ENV_DEV,

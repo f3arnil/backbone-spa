@@ -4,8 +4,8 @@ module.exports = (function () {
 
     var ChannelsCollection = require('../collection/channels-collection');
 
-    var ChannelTemplate = require('tpl!../template/channel-item');
-    var ChannelsTemplate = require('tpl!../template/channels-template');
+    var ChannelTemplate = require('tpl!../templates/channel-item');
+    var ChannelsTemplate = require('tpl!../templates/channels-template');
 
     var channelsView = Backbone.View.extend({
         el: '#channels-view',

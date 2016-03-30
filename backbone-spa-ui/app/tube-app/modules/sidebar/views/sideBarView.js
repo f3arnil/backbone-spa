@@ -2,7 +2,7 @@
 
 module.exports = (function () {
     
-    var SideBarTpl = require('tpl!../template/sidebar-template');
+    var SideBarTpl = require('tpl!../templates/sidebar-template');
 
     var SideBarView = Backbone.View.extend({
         el: '#left-panel',
