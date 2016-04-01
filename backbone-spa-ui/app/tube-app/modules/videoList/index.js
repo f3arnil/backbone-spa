@@ -9,7 +9,7 @@ module.exports = (function() {
         name: 'videoList',
         layoutView: {
             constructor: VideoListView,
-            options: { onLoadEvent: 'videoList:loaded' }
+            options: {}
         },
         router: {
             constructor: VideoListRouter,

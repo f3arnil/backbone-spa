@@ -1,9 +1,10 @@
 module.exports = (function () {
     'use strict';
 
+    var CustomView = require('appCommon/customView');
     var VideoListTemplate = require('tpl!../templates/video-list');
 
-    var VideoListView = Backbone.View.extend({
+    var VideoListView = CustomView.extend({
         el: '#article',
         template: VideoListTemplate,
         initialize: function (options) {

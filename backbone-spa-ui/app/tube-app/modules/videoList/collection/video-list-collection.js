@@ -6,7 +6,7 @@ module.exports = (function () {
         model: VideoListModel,
         url: '/videos',
     });
-    
+    //console.log(VideoListModel());
     return VideoListCollection;
 
 })();

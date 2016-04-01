@@ -100,7 +100,7 @@ module.exports = (function () {
     };
 
     Module.prototype.setViewLoad = function () {
-        //console.log('start:view:' + this.name);
+        console.log('start:view:' + this.name);
 
         this.trigger(this.parentModule + ':changeView', this.name);
 
@@ -113,16 +113,20 @@ module.exports = (function () {
 
     Module.prototype.destroyView = function (event) {
         var load = event + ':load';
-        $(this.layoutView.el).html('');
-        delete this.layoutView;
 
-        this.once(load, this.setViewLoad, this);
-
-        if (!this.modules) { return; }
+        if (this.modules) {
+            _.each(this.modules, function (elem) {
+                this.trigger(elem.module.prototype.name + ':destroy', this.currentView);
+            }, this);
+        }
         
-        _.each(this.modules, function (elem) {
-             this.trigger(elem.module.prototype.name + ':destroy', this.currentView);
-        }, this);
+        $(this.layoutView.el).html('');
+//        this.off(this.name + ':submodules:loaded');
+//        this.off(this.name + ':module:loaded');
+
+        this.layoutView.dispose(this.name);
+        delete this.layoutView;
+        this.once(load, this.setViewLoad, this);
     };
 
     Module.prototype.changeCurrentView = function (name) {
