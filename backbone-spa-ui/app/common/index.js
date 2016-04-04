@@ -121,11 +121,10 @@ module.exports = (function () {
         }
         
         $(this.layoutView.el).html('');
-//        this.off(this.name + ':submodules:loaded');
-//        this.off(this.name + ':module:loaded');
+        this.off(this.name + ':submodules:loaded');
+        this.off(this.name + ':module:loaded');
 
         this.layoutView.dispose(this.name);
-        delete this.layoutView;
         this.once(load, this.setViewLoad, this);
     };
 

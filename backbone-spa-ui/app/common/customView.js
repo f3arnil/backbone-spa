@@ -9,7 +9,7 @@ module.exports = (function () {
             if (this.collection) {
                 this.collection.remove(this.collection.models);
             }
-
+            delete this.layoutView;
             console.log('Delete ... ', name);
         }
     });
