@@ -15,11 +15,13 @@ module.exports = (function () {
         var load = this.name + ':load';
         var destroy = this.name + ':destroy';
         var currentView = this.name + ':changeView'
+        var destroyCurrentView = this.name + 'subview:destroy';
         _.extend(this, Backbone.Events);
 
         this.once(load, this.setViewLoad, this);
         this.on(destroy, this.destroyView, this);
         this.on(currentView, this.changeCurrentView, this);
+        this.on(destroyCurrentView, this.destroyCurrentView, this);
 
         this.setDefault();
     };
@@ -78,6 +80,7 @@ module.exports = (function () {
                 parentModule: this.name
             });
             this[module.name] = module;
+            //this[module.name].name = module.name;
         }, this);
 
     };
@@ -112,21 +115,39 @@ module.exports = (function () {
     };
 
     Module.prototype.destroyView = function (event) {
-        var load = event + ':load';
-
+        this.subViewsCount = 0;
         if (this.modules) {
+            this.subViewsCount = this.modules.length;
             _.each(this.modules, function (elem) {
                 this.trigger(elem.module.prototype.name + ':destroy', this.currentView);
             }, this);
+        } else {
+            //this.trigger(this.parentModule + 'subview:destroy');
+            this.destroyCurrentView();
         }
-        
-        $(this.layoutView.el).html('');
-        this.off(this.name + ':submodules:loaded');
-        this.off(this.name + ':module:loaded');
-
-        this.layoutView.dispose(this.name);
-        this.once(load, this.setViewLoad, this);
     };
+
+    Module.prototype.destroyCurrentView = function () {
+        var load = this.name + ':load';
+        this.subViewsCount--;
+        if (this.subViewsCount <= 0) {
+            this.off(this.name + ':submodules:loaded');
+            this.off(this.name + ':module:loaded');
+
+            this.layoutView.dispose(this.name);
+            delete this.layoutView;
+            this.once(load, this.setViewLoad, this);
+            this.trigger(this.parentModule + 'subview:destroy');
+        }
+    }
+
+    Module.prototype.destroySubView = function () {
+        this.subViewsCount--;
+        this.trigger(this.name + ':subview:destroy');
+        //        _.each(this.modules, function (elem) {
+        //            this.trigger(elem.module.prototype.name + ':destroy', this.currentView);
+        //        }, this);
+    }
 
     Module.prototype.changeCurrentView = function (name) {
         if (this.currentView) {

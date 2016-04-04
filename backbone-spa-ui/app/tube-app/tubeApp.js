@@ -48,9 +48,9 @@ module.exports = (function () {
             ]
         });
 
-//        Backbone.Events.on('all', function () {
-//            console.log(app);
-//        }, this);
+        Backbone.Events.on('all', function () {
+            console.log(app);
+        }, this);
 
     };
 
