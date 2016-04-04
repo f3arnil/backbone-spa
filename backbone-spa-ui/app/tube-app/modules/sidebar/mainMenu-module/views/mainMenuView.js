@@ -1,9 +1,10 @@
 module.exports = (function () {
     'use strict';
 
+    var CustomView = require('appCommon/customView');
     var mainMenuTpl = require('tpl!../templates/main-menu');
 
-    var MainMenuView = Backbone.View.extend({
+    var MainMenuView = CustomView.extend({
         el: '#left-panel',
         template: mainMenuTpl,
         events: {

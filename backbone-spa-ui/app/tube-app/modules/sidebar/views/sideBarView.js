@@ -2,9 +2,10 @@
 
 module.exports = (function () {
     
+    var CustomView = require('appCommon/customView');
     var SideBarTpl = require('tpl!../templates/sidebar-template');
 
-    var SideBarView = Backbone.View.extend({
+    var SideBarView = CustomView.extend({
         el: '#left-panel',
         template: SideBarTpl,
         initialize: function (options) {

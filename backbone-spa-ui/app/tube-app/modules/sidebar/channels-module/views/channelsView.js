@@ -2,12 +2,12 @@
 
 module.exports = (function () {
 
+    var CustomView = require('appCommon/customView');
     var ChannelsCollection = require('../collection/channels-collection');
-
     var ChannelTemplate = require('tpl!../templates/channel-item');
     var ChannelsTemplate = require('tpl!../templates/channels-template');
 
-    var channelsView = Backbone.View.extend({
+    var channelsView = CustomView.extend({
         el: '#channels-view',
         template: ChannelsTemplate,
         itemTemplate: ChannelTemplate,
