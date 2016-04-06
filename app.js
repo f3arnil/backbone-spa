@@ -19,7 +19,7 @@ app.get('/channels', function (req, res) {
 });
 
 app.get('/videos', function (req, res) {
-    res.send(videos);
+    res.send(JSON.stringify(videos));
 });
 
 app.listen(config.application.port, function () {

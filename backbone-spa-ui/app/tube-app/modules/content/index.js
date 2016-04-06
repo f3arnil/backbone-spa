@@ -1,11 +1,11 @@
 module.exports = (function () {
     'use strict';
 
+    var Module = require('appCommon/');
     var ContentView = require('./views/contentView');
     var ContentRouter = require('./router/contentRouter');
-    var Module = require('../../../common/module');
-    var VideoListModule = require('../videoList/');
-    var DetailsModule = require('../details/');
+    var VideoListModule = require('appModules/videoList/');
+    var DetailsModule = require('appModules/details/');
 
     var ContentModule = Module.extend({
         name: 'content',

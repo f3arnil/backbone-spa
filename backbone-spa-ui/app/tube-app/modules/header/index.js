@@ -2,8 +2,7 @@ module.exports = (function () {
     'use strict';
 
     //var HeaderView = require('./views/headerView');
-    
-    var Module = require('../../../common/module');
+    var Module = require('appCommon/');
 
     var HeaderModule = Module.extend({
         name: 'header',

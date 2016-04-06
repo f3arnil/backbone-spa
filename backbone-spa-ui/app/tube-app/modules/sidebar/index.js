@@ -1,9 +1,9 @@
 module.exports = (function () {
     'use strict'
 
+    var Module = require('appCommon/');
     var SideBarView = require('./views/sideBarView');
     var SideBarRouter = require('./router/sideBarRouter');
-    var Module = require('../../../common/module');
     var MainMenuModule = require('./mainMenu-module/');
     var ChannelsModule = require('./channels-module/');
 

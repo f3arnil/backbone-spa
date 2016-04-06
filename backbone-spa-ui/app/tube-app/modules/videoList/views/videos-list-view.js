@@ -1,18 +1,18 @@
 module.exports = (function () {
     'use strict';
 
+    var CustomView = require('appCommon/customView');
     var VideosListTemplate = require('tpl!../templates/videos-list');
     var VideoListTemplate = require('tpl!../templates/video-list');
     var VideoListView = require('./video-list-view.js');
     var VideoListCollection = require('../collection/video-list-collection');
     
-    var VideosListView = Backbone.View.extend({
+    var VideosListView = CustomView.extend({
         el: '#article',
         template: VideosListTemplate,
         itemTemplate: VideoListTemplate,
         initialize: function (options) {
-             _.extend(this,options);
-            //console.log('Init VideosListView');
+            _.extend(this, options);
             this.collection = new VideoListCollection();
             this.listenTo(Backbone.Events, 'Channel:video', this.listVideosLoad);
             this.listenTo(this.collection, 'sync', this.onCollectionSync);
@@ -37,8 +37,9 @@ module.exports = (function () {
         },
         clickVideo: function (event) {
             event.preventDefault();
-            //Backbone.Events.trigger('show:details');
-            Backbone.history.navigate(event.target.hash, {trigger: true});
+            Backbone.history.navigate(event.target.hash, {
+                trigger: true
+            });
         },
         onCollectionSync: function () {
             this.render();
@@ -52,12 +53,10 @@ module.exports = (function () {
         render: function () {
             this.$el.html(this.template());
             this.trigger('render:complite');
-            Backbone.Events.trigger(this.onLoadEvent);
             return this;
         }
     });
 
-        
     return VideosListView;
 
 })();

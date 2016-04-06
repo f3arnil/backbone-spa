@@ -1,24 +1,22 @@
-'use strict';
-
 module.exports = (function () {
-    
-    var CustomView = require('appCommon/customView');
-    var SideBarTpl = require('tpl!../templates/sidebar-template');
+    'use strict';
 
-    var SideBarView = CustomView.extend({
-        el: '#left-panel',
-        template: SideBarTpl,
+    var CustomView = require('appCommon/customView');
+    var commentsViewTpl = require('tpl!../templates/comments');
+
+    var CommentsView = CustomView.extend({
+        el: '#comments',
+        template: commentsViewTpl,
         initialize: function (options) {
             _.extend(this,options);
             this.render();
         },
         render: function () {
             this.$el.html(this.template());
-            Backbone.Events.trigger(this.onLoadEvent);
             return this;
         }
     });
 
-    return SideBarView;
+    return CommentsView;
 
 })();

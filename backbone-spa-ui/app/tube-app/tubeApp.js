@@ -1,13 +1,13 @@
 module.exports = (function () {
     'use strict';
 
+    var Module = require('appCommon/');
     var AppRouter = require('./router');
     var TubeAppView = require('./views/baseTubeAppView');
-    var HeaderModule = require('./modules/header/');
-    var SearchModule = require('./modules/search/');
-    var SidebarModule = require('./modules/sidebar/');
-    var ContentModule = require('./modules/content/');
-    var Module = require('../common/module');
+    var HeaderModule = require('appModules/header/');
+    var SearchModule = require('appModules/search/');
+    var SidebarModule = require('appModules/sidebar/');
+    var ContentModule = require('appModules/content/');
 
     function init() {
 
@@ -47,6 +47,10 @@ module.exports = (function () {
                 }
             ]
         });
+
+        Backbone.Events.on('all', function () {
+            console.log(app);
+        }, this);
 
     };
 

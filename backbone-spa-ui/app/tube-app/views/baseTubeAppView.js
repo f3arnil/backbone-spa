@@ -1,9 +1,10 @@
 module.exports = (function () {
     'use strict';
 
+    var CustomView = require('appCommon/customView');
     var TubeAppTpl = require('tpl!../templates/tube-app-view');
 
-    var TubeAppView = Backbone.View.extend({
+    var TubeAppView = CustomView.extend({
         el: '#app-view',
         template: TubeAppTpl,
         modules: {},

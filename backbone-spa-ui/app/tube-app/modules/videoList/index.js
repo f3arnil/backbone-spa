@@ -1,15 +1,15 @@
 module.exports = (function() {
     'use strict';
 
+    var Module = require('appCommon/');
     var VideoListView = require('./views/videos-list-view');
     var VideoListRouter = require('./router/video-list-router');
-    var Module = require('../../../common/module');
 
     var VideoListModule = Module.extend({
         name: 'videoList',
         layoutView: {
             constructor: VideoListView,
-            options: { onLoadEvent: 'videoList:loaded' }
+            options: {}
         },
         router: {
             constructor: VideoListRouter,

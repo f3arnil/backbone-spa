@@ -1,9 +1,10 @@
 module.exports = (function () {
     'use strict';
 
+    var CustomView = require('appCommon/customView');
     var headerViewTpl = require('tpl!../templates/header');
 
-    var HeaderView = Backbone.View.extend({
+    var HeaderView = CustomView.extend({
         el: '#header-holder',
         template: headerViewTpl,
         initialize: function (options) {
@@ -12,7 +13,6 @@ module.exports = (function () {
         },
         render: function () {
             this.$el.html(this.template);
-            Backbone.Events.trigger(this.onLoadEvent);
             return this;
         }
     });
