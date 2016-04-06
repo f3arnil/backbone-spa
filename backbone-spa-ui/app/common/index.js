@@ -15,13 +15,11 @@ module.exports = (function () {
         var load = this.name + ':load';
         var destroy = this.name + ':destroy';
         var currentView = this.name + ':changeView'
-        var destroyCurrentView = this.name + 'subview:destroy';
         _.extend(this, Backbone.Events);
 
         this.once(load, this.setViewLoad, this);
         this.on(destroy, this.destroyView, this);
         this.on(currentView, this.changeCurrentView, this);
-        this.on(destroyCurrentView, this.destroyCurrentView, this);
 
         this.setDefault();
     };
@@ -80,7 +78,6 @@ module.exports = (function () {
                 parentModule: this.name
             });
             this[module.name] = module;
-            //this[module.name].name = module.name;
         }, this);
 
     };
@@ -103,55 +100,46 @@ module.exports = (function () {
     };
 
     Module.prototype.setViewLoad = function () {
-        console.log('start:view:' + this.name);
 
         this.trigger(this.parentModule + ':changeView', this.name);
-
+        
         var elem = this['layoutView'];
         var Element = elem.constructor;
         var options = elem.options || {};
         this['layoutView'] = new Element(options);
-
     };
 
-    Module.prototype.destroyView = function (event) {
+    Module.prototype.destroyView = function () {
         this.subViewsCount = 0;
         if (this.modules) {
             this.subViewsCount = this.modules.length;
+            this.on(this.name + ':parentview:destroy', this.destroyCurrentView, this);
             _.each(this.modules, function (elem) {
-                this.trigger(elem.module.prototype.name + ':destroy', this.currentView);
+                this.trigger(elem.module.prototype.name + ':destroy');
             }, this);
         } else {
-            //this.trigger(this.parentModule + 'subview:destroy');
             this.destroyCurrentView();
         }
     };
 
     Module.prototype.destroyCurrentView = function () {
-        var load = this.name + ':load';
         this.subViewsCount--;
-        if (this.subViewsCount <= 0) {
-            this.off(this.name + ':submodules:loaded');
-            this.off(this.name + ':module:loaded');
 
-            this.layoutView.dispose(this.name);
-            delete this.layoutView;
-            this.once(load, this.setViewLoad, this);
-            this.trigger(this.parentModule + 'subview:destroy');
+        if (this.subViewsCount > 0) { 
+            return;
         }
-    }
 
-    Module.prototype.destroySubView = function () {
-        this.subViewsCount--;
-        this.trigger(this.name + ':subview:destroy');
-        //        _.each(this.modules, function (elem) {
-        //            this.trigger(elem.module.prototype.name + ':destroy', this.currentView);
-        //        }, this);
+        var load = this.name + ':load';
+        this.layoutView.dispose(this.name);
+        delete this.layoutView;
+        this.once(load, this.setViewLoad, this);
+        this.trigger(this.parentModule + ':parentview:destroy');
+        this.off(this.parentModule + ':parentview:destroy');
     }
 
     Module.prototype.changeCurrentView = function (name) {
-        if (this.currentView) {
-            this.trigger(this.currentView + ':destroy', this.currentView);
+        if (this.currentView && this.currentView != name) {
+            this.trigger(this.currentView + ':destroy');
         }
         this.currentView = name;
     }

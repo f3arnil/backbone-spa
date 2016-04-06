@@ -13,7 +13,6 @@ module.exports = (function () {
         },
         render: function () {
             this.$el.html(this.template());
-            console.log('List video ... ', this);
             return this;
         }
     });
