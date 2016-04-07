@@ -6,5 +6,12 @@
         "rootDirectory": "backbone-spa-ui",
         "staticPath": "backbone-spa-ui/static",
         "bundlePath": "backbone-spa-ui/build"
+    },
+    "mongoose": {
+        "user": "admin",
+        "pass": "admin",
+        "host": "ds011800.mlab.com",
+        "port": "11800",
+        "database": "backbonedb"
     }
 }
