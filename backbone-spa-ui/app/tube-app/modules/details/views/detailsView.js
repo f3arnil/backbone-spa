@@ -18,7 +18,6 @@ module.exports = (function () {
             });
         },
         onModelSync: function () {
-            console.log(this.model.toJSON());
             this.render();
         },
         onModelError: function (model, xhr) {
