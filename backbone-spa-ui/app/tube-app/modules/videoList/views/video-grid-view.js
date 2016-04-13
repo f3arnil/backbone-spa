@@ -2,11 +2,11 @@ module.exports = (function () {
     'use strict';
 
     var CustomView = require('appCommon/customView');
-    var VideoListTemplate = require('tpl!../templates/video-list');
+    var VideoGridTemplate = require('tpl!../templates/video-grid');
 
     var VideoListView = CustomView.extend({
         el: '#article',
-        template: VideoListTemplate,
+        template: VideoGridTemplate,
         initialize: function (options) {
             this.render();
         },

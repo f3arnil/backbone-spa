@@ -7,9 +7,11 @@ module.exports = (function () {
             $(this.el).html('');
             this.undelegateEvents();
             this.$el.removeData().unbind();
-            if (this.collection) {
-                this.collection.remove(this.collection.models);
-            }
+            //            if (this.collection) {
+            //                this.collection.remove(this.collection.models);
+            //            }
+            this.$el.empty();
+            this.stopListening();
             console.log('Delete ... ', name);
         }
     });

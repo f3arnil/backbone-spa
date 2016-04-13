@@ -6,7 +6,10 @@
             </div>
             <div class="details-description">
                 <div class="details-info">
-                    <h3>Тест-драйв от Давидыча. Mercedes AMG GTs.</h3>
+                    <h3><%= name %></h3>
+                    <p style="text-align: justify; padding-top: 10px;"><%= description %></p>
+                    <p style="text-align: justify; padding-top: 10px;"><%= category %></p>
+                    <p style="text-align: justify; padding-top: 10px;"><%= views_count %></p>
                 </div>
             </div>
 

@@ -11,24 +11,19 @@ module.exports = (function () {
         name: 'sidebar',
         layoutView: {
             constructor: SideBarView,
-            options: {
-                onLoadEvent: 'sidebar:loaded'
-            }
+            options: {}
         },
         router: {
             constructor: SideBarRouter,
             options: {}
         },
+        switchable: false,
         modules: [
             {
-//                switchable: false,
-//                event: 'show:mainMenu',
                 module: MainMenuModule,
                 weight: 6
             },
             {
-//                switchable: false,
-//                event: 'show:channels',
                 module: ChannelsModule,
                 weight: 7
             }

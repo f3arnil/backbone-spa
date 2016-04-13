@@ -3,14 +3,15 @@ module.exports = (function () {
 
     var CustomView = require('appCommon/customView');
     var VideosListTemplate = require('tpl!../templates/videos-list');
-    var VideoListTemplate = require('tpl!../templates/video-list');
+    var ListTemplate = require('tpl!../templates/video-list');
+    var GridTemplate = require('tpl!../templates/video-grid');
     var VideoListView = require('./video-list-view.js');
     var VideoListCollection = require('../collection/video-list-collection');
     
     var VideosListView = CustomView.extend({
         el: '#article',
         template: VideosListTemplate,
-        itemTemplate: VideoListTemplate,
+        itemTemplate: GridTemplate,
         initialize: function (options) {
             _.extend(this, options);
             this.collection = new VideoListCollection();
@@ -33,13 +34,23 @@ module.exports = (function () {
             }, this);
         },
         events: {
-            'click .item-video': 'clickVideo'
+            'click .item-video': 'clickVideo',
+            'change .select-view': 'selectView'
         },
         clickVideo: function (event) {
             event.preventDefault();
             Backbone.history.navigate(event.target.hash, {
                 trigger: true
             });
+        },
+        selectView: function (event) {
+            this.$el.empty();
+            if (event.currentTarget.value === 'Grid') {
+                this.itemTemplate = GridTemplate;
+            } else {
+                this.itemTemplate = ListTemplate;
+            }
+            this.render();
         },
         onCollectionSync: function () {
             this.render();

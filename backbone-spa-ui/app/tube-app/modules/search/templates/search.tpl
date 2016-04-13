@@ -1,6 +1,7 @@
 <div class="search-wrap">
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="navbar-brand left-pos">
+            <div class="hide-menu"></div>
             <a class="logo" href="#"><img src="/static/logo.png"></a>
         </div>
         <div class="search">

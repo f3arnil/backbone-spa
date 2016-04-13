@@ -25,7 +25,7 @@ module.exports = (function () {
     };
 
     Module.prototype.setDefault = function () {
-        var defaultProp = ['layoutView', 'router'];
+        var defaultProp = ['router', 'layoutView'];
         _.each(defaultProp, function (property) {
             if (!(property in this)) {
                 return;
@@ -99,10 +99,11 @@ module.exports = (function () {
         }
     };
 
-    Module.prototype.setViewLoad = function () {
-
-        this.trigger(this.parentModule + ':changeView', this.name);
-        
+    Module.prototype.setViewLoad = function (value) {
+        if (value != false) {
+            this.trigger(this.parentModule + ':changeView', this.name);
+        }
+        console.log('START ', this.name, ' VIEW');
         var elem = this['layoutView'];
         var Element = elem.constructor;
         var options = elem.options || {};
@@ -125,23 +126,24 @@ module.exports = (function () {
     Module.prototype.destroyCurrentView = function () {
         this.subViewsCount--;
 
-        if (this.subViewsCount > 0) { 
+        if (this.subViewsCount > 0) {
             return;
         }
 
         var load = this.name + ':load';
         this.layoutView.dispose(this.name);
         delete this.layoutView;
+
         this.once(load, this.setViewLoad, this);
         this.trigger(this.parentModule + ':parentview:destroy');
-        this.off(this.parentModule + ':parentview:destroy');
+        this.off(this.name + ':parentview:destroy');
     }
 
     Module.prototype.changeCurrentView = function (name) {
         if (this.currentView && this.currentView != name) {
             this.trigger(this.currentView + ':destroy');
+            this.currentView = name;
         }
-        this.currentView = name;
     }
 
     Module.prototype.compareWeight = function (moduleA, moduleB) {
