@@ -5,7 +5,7 @@ module.exports = (function () {
     var mainMenuTpl = require('tpl!../templates/main-menu');
 
     var MainMenuView = CustomView.extend({
-        el: '#left-panel',
+        el: '#mainmenu-view',
         template: mainMenuTpl,
         events: {
             'click #sidebar-vertical-menu a': 'showPage'
@@ -21,7 +21,6 @@ module.exports = (function () {
         },
         render: function () {
             this.$el.prepend(this.template());
-            Backbone.Events.trigger(this.onLoadEvent);
             return this;
         }
     });

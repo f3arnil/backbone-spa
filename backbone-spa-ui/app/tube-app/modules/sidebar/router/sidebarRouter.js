@@ -3,8 +3,6 @@ module.exports = (function () {
 
     var SideBarRouter = Backbone.Router.extend({
         routes: {
-//            'channel/:id': 'showChannel',
-//            'channel/:id/:action': 'channelAction'
         },
         showChannel: function (id) {
             console.log('showChannel', id);

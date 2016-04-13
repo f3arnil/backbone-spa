@@ -49,7 +49,7 @@ module.exports = (function () {
         });
 
 //        Backbone.Events.on('all', function () {
-//            console.log(app);
+            console.log(app);
 //        }, this);
 
     };

@@ -15,7 +15,8 @@ module.exports = (function () {
         router: {
             constructor: ChannelsRouter,
             options: {}
-        }
+        },
+        switchable: true
     });
 
     return ChannelsModule;

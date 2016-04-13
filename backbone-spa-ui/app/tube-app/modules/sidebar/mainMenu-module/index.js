@@ -9,14 +9,13 @@ module.exports = (function () {
         name: 'mainMenu',
         layoutView: {
             constructor: MainMenuView,
-            options: {
-                onLoadEvent: 'mainMenu:loaded'
-            }
+            options: {}
         },
         router: {
             constructor: MainMenuRouter,
             options: {}
-        }
+        },
+        switchable: true
     });
 
     return MainMenuModule;
